@@ -3,6 +3,8 @@ import clsx from 'clsx';
 import { createClient } from '@/prismicio';
 import type { Metadata } from 'next';
 import './globals.css';
+import Header from '@/components/Header';
+import Navigation from '@/components/Navigation';
 
 const montserrat = Montserrat({
     subsets: ['latin'],
@@ -18,14 +20,14 @@ const sourceCodePro = Source_Code_Pro({
 
 export async function generateMetadata(): Promise<Metadata> {
     const client = createClient();
-    const page = await client.getSingle('settings');
+    const settings = await client.getSingle('settings');
 
     return {
-        title: page.data.site_title || 'Luisa Falcão',
+        title: settings.data.site_title || 'Luisa Falcão',
         description:
-            page.data.meta_description || 'front-end developer & designer',
+            settings.data.meta_description || 'front-end developer & designer',
         openGraph: {
-            images: [page.data.og_image.url || ''],
+            images: [settings.data.og_image.url || ''],
         },
     };
 }
@@ -41,9 +43,9 @@ export default function RootLayout({
             className={clsx(montserrat.variable, sourceCodePro.variable)}
         >
             <body>
-                <header>header</header>
+                <Header></Header>
                 {children}
-                <footer>footer</footer>
+                <Navigation></Navigation>
             </body>
         </html>
     );
