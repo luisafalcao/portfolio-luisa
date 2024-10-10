@@ -8,7 +8,7 @@ import Grid from "@/components/Grid";
 export type WorkProps = SliceComponentProps<Content.WorkSlice>;
 
 /*** Component for "Work" Slices. */
-const Work = ({ slice }: WorkProps): JSX.Element => {
+const Work = ({ slice, context }: WorkProps): JSX.Element => {
   return (
     <Bounded
       data-slice-type={slice.slice_type}
@@ -23,7 +23,8 @@ const Work = ({ slice }: WorkProps): JSX.Element => {
         </ul>
       </div>
       <div>
-        <Grid></Grid>
+
+        <Grid projects={context}></Grid>
       </div>
     </Bounded>
   );

@@ -8,11 +8,12 @@ import Header from "@/components/Header";
 export default async function Page() {
     const client = createClient();
     const page = await client.getSingle("homepage");
+    const pages = await client.getAllByType("project")
 
     return (
         <>
             <Header></Header>
-            <SliceZone slices={page.data.slices} components={components} />
+            <SliceZone slices={page.data.slices} components={components} context={pages} />
         </>
     );
 }
