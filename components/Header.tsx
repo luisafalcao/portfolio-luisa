@@ -8,7 +8,7 @@ export default async function Header() {
     return (
         <>
             <Heading as="h1" size="xxl">{settings.data.site_title}</Heading>
-            <Heading as="h2" size="xl">{settings.data.meta_description}</Heading>
+            <Heading size="xl" fontFamily="secondary">{settings.data.meta_description}</Heading>
             <p>ABOUT</p>
         </>
     );

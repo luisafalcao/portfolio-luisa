@@ -19,7 +19,7 @@ const About = ({ slice }: AboutProps): JSX.Element => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-      <Heading as="h2" size="md" className="text-2xl lowercase font-bold my-3">About</Heading>
+      <Heading>About</Heading>
       <PrismicRichText field={slice.primary.about} components={components} />
     </Bounded>
   );
