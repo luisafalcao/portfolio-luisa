@@ -4,7 +4,7 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type HomepageDocumentDataSlicesSlice = AboutSlice;
+type HomepageDocumentDataSlicesSlice = WorkSlice | ContactSlice | AboutSlice;
 
 /**
  * Content for Homepage documents
@@ -214,6 +214,78 @@ type AboutSliceVariation = AboutSliceDefault;
  */
 export type AboutSlice = prismic.SharedSlice<"about", AboutSliceVariation>;
 
+/**
+ * Primary content in *Contact → Default → Primary*
+ */
+export interface ContactSliceDefaultPrimary {
+  /**
+   * Email field in *Contact → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact.default.primary.email
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  email: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for Contact Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ContactSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ContactSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Contact*
+ */
+type ContactSliceVariation = ContactSliceDefault;
+
+/**
+ * Contact Shared Slice
+ *
+ * - **API ID**: `contact`
+ * - **Description**: Contact
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ContactSlice = prismic.SharedSlice<
+  "contact",
+  ContactSliceVariation
+>;
+
+/**
+ * Default variation for Work Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type WorkSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  never
+>;
+
+/**
+ * Slice variation for *Work*
+ */
+type WorkSliceVariation = WorkSliceDefault;
+
+/**
+ * Work Shared Slice
+ *
+ * - **API ID**: `work`
+ * - **Description**: Work
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type WorkSlice = prismic.SharedSlice<"work", WorkSliceVariation>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -246,6 +318,13 @@ declare module "@prismicio/client" {
       AboutSliceDefaultPrimary,
       AboutSliceVariation,
       AboutSliceDefault,
+      ContactSlice,
+      ContactSliceDefaultPrimary,
+      ContactSliceVariation,
+      ContactSliceDefault,
+      WorkSlice,
+      WorkSliceVariation,
+      WorkSliceDefault,
     };
   }
 }
