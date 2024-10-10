@@ -1,0 +1,27 @@
+{
+    "artificialDelayMilliseconds": 700,
+    "keepExistingTerminalsOpen": false,
+    "runOnStartup": true,
+    "terminals": [
+        {
+            "splitTerminals": [
+                {
+                    "name": "slicemachine",
+                    "commands": ["npm run slicemachine"]
+                },
+                {
+                    "name": "nextjs",
+                    "commands": ["npm run dev"]
+                },
+                {
+                    "name": "installs",
+                    "commands": ["npm run dev"]
+                },
+                {
+                    "name": "test",
+                    "commands": ["jest --watch"]
+                }
+            ]
+        }
+    ]
+}
