@@ -1,10 +1,24 @@
-export default function Home() {
-    return (
-        <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-            <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-                <h1 className="font-primary">oi</h1>
-            </main>
-            <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center"></footer>
-        </div>
-    );
+import { Metadata } from "next";
+import { SliceZone } from "@prismicio/react";
+
+import { createClient } from "@/prismicio";
+// import { components } from "@/slices";
+
+export default async function Page() {
+    const client = createClient();
+    const page = await client.getSingle("homepage");
+
+    return <div className="text-red-500">Homepage</div>
+
+    // return <SliceZone slices={page.data.slices} components={components} />;
+}
+
+export async function generateMetadata(): Promise<Metadata> {
+    const client = createClient();
+    const page = await client.getSingle("homepage");
+
+    return {
+        title: page.data.meta_title,
+        description: page.data.meta_description,
+    };
 }

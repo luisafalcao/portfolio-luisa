@@ -14,8 +14,7 @@
                     "commands": ["npm run dev"]
                 },
                 {
-                    "name": "installs",
-                    "commands": ["npm run dev"]
+                    "name": "installs"
                 },
                 {
                     "name": "test",
