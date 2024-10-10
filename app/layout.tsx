@@ -3,7 +3,6 @@ import clsx from 'clsx';
 import { createClient } from '@/prismicio';
 import type { Metadata } from 'next';
 import './globals.css';
-import Header from '@/components/Header';
 import Navigation from '@/components/Navigation';
 
 const montserrat = Montserrat({
@@ -43,7 +42,6 @@ export default function RootLayout({
             className={clsx(montserrat.variable, sourceCodePro.variable)}
         >
             <body>
-                <Header></Header>
                 {children}
                 <Navigation></Navigation>
             </body>

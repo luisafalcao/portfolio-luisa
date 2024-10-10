@@ -80,7 +80,7 @@ export type HomepageDocument<Lang extends string = string> =
     Lang
   >;
 
-type ProjectDocumentDataSlicesSlice = never;
+type ProjectDocumentDataSlicesSlice = GallerySlice | HeroSlice;
 
 /**
  * Content for Project documents
@@ -339,6 +339,138 @@ export type ContactSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Item in *Gallery → Default → Primary → Photos*
+ */
+export interface GallerySliceDefaultPrimaryPhotosItem {
+  /**
+   * Photo field in *Gallery → Default → Primary → Photos*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: gallery.default.primary.photos[].photo
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  photo: prismic.ImageField<never>;
+}
+
+/**
+ * Primary content in *Gallery → Default → Primary*
+ */
+export interface GallerySliceDefaultPrimary {
+  /**
+   * Photos field in *Gallery → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: gallery.default.primary.photos[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  photos: prismic.GroupField<Simplify<GallerySliceDefaultPrimaryPhotosItem>>;
+}
+
+/**
+ * Default variation for Gallery Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type GallerySliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<GallerySliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Gallery*
+ */
+type GallerySliceVariation = GallerySliceDefault;
+
+/**
+ * Gallery Shared Slice
+ *
+ * - **API ID**: `gallery`
+ * - **Description**: Gallery
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type GallerySlice = prismic.SharedSlice<
+  "gallery",
+  GallerySliceVariation
+>;
+
+/**
+ * Primary content in *Hero → Default → Primary*
+ */
+export interface HeroSliceDefaultPrimary {
+  /**
+   * Main Image field in *Hero → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.default.primary.main_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  main_image: prismic.ImageField<never>;
+
+  /**
+   * Description field in *Hero → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.default.primary.description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  description: prismic.RichTextField;
+
+  /**
+   * Link Github field in *Hero → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.default.primary.link_github
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link_github: prismic.LinkField;
+
+  /**
+   * Link Live Demo field in *Hero → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.default.primary.link_live_demo
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  link_live_demo: prismic.LinkField;
+}
+
+/**
+ * Default variation for Hero Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HeroSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<HeroSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Hero*
+ */
+type HeroSliceVariation = HeroSliceDefault;
+
+/**
+ * Hero Shared Slice
+ *
+ * - **API ID**: `hero`
+ * - **Description**: Hero
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HeroSlice = prismic.SharedSlice<"hero", HeroSliceVariation>;
+
+/**
  * Default variation for Work Slice
  *
  * - **API ID**: `default`
@@ -404,6 +536,15 @@ declare module "@prismicio/client" {
       ContactSliceDefaultPrimary,
       ContactSliceVariation,
       ContactSliceDefault,
+      GallerySlice,
+      GallerySliceDefaultPrimaryPhotosItem,
+      GallerySliceDefaultPrimary,
+      GallerySliceVariation,
+      GallerySliceDefault,
+      HeroSlice,
+      HeroSliceDefaultPrimary,
+      HeroSliceVariation,
+      HeroSliceDefault,
       WorkSlice,
       WorkSliceVariation,
       WorkSliceDefault,
