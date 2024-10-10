@@ -1,4 +1,5 @@
 import { createClient } from '@/prismicio';
+import Heading from './Heading';
 
 export default async function Header() {
     const client = createClient();
@@ -6,8 +7,8 @@ export default async function Header() {
 
     return (
         <>
-            <h1>{settings.data.site_title}</h1>
-            <h2>{settings.data.meta_description}</h2>
+            <Heading as="h1" size="xxl">{settings.data.site_title}</Heading>
+            <Heading as="h2" size="xl">{settings.data.meta_description}</Heading>
             <p>ABOUT</p>
         </>
     );

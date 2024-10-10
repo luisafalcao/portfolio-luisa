@@ -15,7 +15,7 @@ const config: Config = {
       },
       fontFamily: {
         primary: ["var(--font-montserrat)"],
-        secondary: ["var(--font-s"]
+        secondary: ["var(--font-source-code-pro"]
       }
     },
   },
