@@ -20,7 +20,9 @@ const About = ({ slice }: AboutProps): JSX.Element => {
       data-slice-variation={slice.variation}
     >
       <Heading>About</Heading>
-      <PrismicRichText field={slice.primary.about} components={components} />
+      <div>
+        <PrismicRichText field={slice.primary.about} components={components} />
+      </div>
     </Bounded>
   );
 };
