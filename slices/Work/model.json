@@ -30,6 +30,33 @@
         }
       },
       "items": {}
+    },
+    {
+      "id": "fullScreen",
+      "name": "Full Screen",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "navigation": {
+          "type": "Group",
+          "config": {
+            "label": "Navigation",
+            "repeat": true,
+            "fields": {
+              "category": {
+                "type": "Text",
+                "config": {
+                  "label": "Category",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
     }
   ]
 }

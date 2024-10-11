@@ -6,11 +6,12 @@ export type BoundedProps = {
     className?: string;
     children: React.ReactNode;
     flexDirection?: "row" | "column";
+    isVariation?: boolean;
 }
 
 export type GridProps = {
     className?: string;
-    children: React.ReactNode;
+    children: React.ReactNode | void;
     flexDirection?: "row" | "column";
 }
 
@@ -36,7 +37,7 @@ export type ButtonProps = {
     children: React.ReactNode;
     className?: string;
     category: KeyTextField;
-    setCurrentState: Dispatch<SetStateAction<KeyTextField>>;
+    setCurrentCategory: Dispatch<SetStateAction<KeyTextField>>;
 }
 
 export type Repo = {

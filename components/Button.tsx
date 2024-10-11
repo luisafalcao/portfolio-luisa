@@ -1,7 +1,7 @@
 import { ButtonProps } from "@/app/types/customTypes"
 import clsx from "clsx"
 
-export default function Button({ as: Comp = "button", className, children, size = "md", fontFamily = "primary", category, setCurrentState }: ButtonProps) {
+export default function Button({ as: Comp = "button", className, children, size = "md", fontFamily = "primary", category, setCurrentCategory }: ButtonProps) {
     return (
         <Comp className={clsx("lowercase my-3",
             size === "xxl" && "text-5xl md:text-6xl lg:text-7xl",
@@ -13,7 +13,7 @@ export default function Button({ as: Comp = "button", className, children, size 
             fontFamily === "primary" && "font-primary font-bold",
             fontFamily === "secondary" && "font-secondary font-medium",
             className
-        )} onClick={() => setCurrentState(category)}>
+        )} onClick={() => setCurrentCategory(category)}>
             {children}
         </Comp>
     )

@@ -614,6 +614,21 @@ export interface WorkSliceDefaultPrimaryNavigationItem {
 }
 
 /**
+ * Item in *Work → Full Screen → Primary → Navigation*
+ */
+export interface WorkSliceFullScreenPrimaryNavigationItem {
+  /**
+   * Category field in *Work → Full Screen → Primary → Navigation*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: work.fullScreen.primary.navigation[].category
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  category: prismic.KeyTextField;
+}
+
+/**
  * Primary content in *Work → Default → Primary*
  */
 export interface WorkSliceDefaultPrimary {
@@ -644,9 +659,39 @@ export type WorkSliceDefault = prismic.SharedSliceVariation<
 >;
 
 /**
+ * Primary content in *Work → Full Screen → Primary*
+ */
+export interface WorkSliceFullScreenPrimary {
+  /**
+   * Navigation field in *Work → Full Screen → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: work.fullScreen.primary.navigation[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  navigation: prismic.GroupField<
+    Simplify<WorkSliceFullScreenPrimaryNavigationItem>
+  >;
+}
+
+/**
+ * Full Screen variation for Work Slice
+ *
+ * - **API ID**: `fullScreen`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type WorkSliceFullScreen = prismic.SharedSliceVariation<
+  "fullScreen",
+  Simplify<WorkSliceFullScreenPrimary>,
+  never
+>;
+
+/**
  * Slice variation for *Work*
  */
-type WorkSliceVariation = WorkSliceDefault;
+type WorkSliceVariation = WorkSliceDefault | WorkSliceFullScreen;
 
 /**
  * Work Shared Slice
@@ -714,8 +759,11 @@ declare module "@prismicio/client" {
       WorkSlice,
       WorkSliceDefaultPrimaryNavigationItem,
       WorkSliceDefaultPrimary,
+      WorkSliceFullScreenPrimaryNavigationItem,
+      WorkSliceFullScreenPrimary,
       WorkSliceVariation,
       WorkSliceDefault,
+      WorkSliceFullScreen,
     };
   }
 }
