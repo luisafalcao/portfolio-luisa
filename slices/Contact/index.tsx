@@ -13,8 +13,9 @@ const Contact = ({ slice }: ContactProps): JSX.Element => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
     >
-      <Heading>Contact</Heading>
-      <div>
+      <Heading className="basis-1/3">Contact</Heading>
+
+      <div className="basis-2/3">
         <Heading as="h3" size="sm">Want to get in touch?</Heading>
         <hr className="border border-slate-600 mb-3" />
         <p>Shoot me an email at <a href={`mailto: ${slice.primary.email}`} className="font-bold">{slice.primary.email}</a></p>

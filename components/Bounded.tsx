@@ -9,8 +9,8 @@ type BoundedProps = {
 
 export default function Bounded({ as: Comp = "section", className, children, flexDirection = "row", ...restProps }: BoundedProps) {
     return (
-        <Comp className={clsx("mx-auto w-3/4 max-w-5xl min-h-screen justify-center flex flex-col border-solid border-black border-2", className)} {...restProps}>
-            <div className={clsx("md:flex gap-10 align-center justify-center items-center m-auto",
+        <Comp className={clsx("mx-auto w-3/4 max-w-5xl min-h-screen justify-center flex flex-col", className)} {...restProps}>
+            <div className={clsx("md:flex w-full gap-10 align-center justify-center items-center m-auto",
                 flexDirection === "column" && "flex-col",
                 flexDirection === "row" && "flex-row",
             )}>
