@@ -16,16 +16,11 @@ const Work = ({ slice, context }: WorkProps): JSX.Element => {
     >
       <div>
         <Heading>Work</Heading>
-        <ul>
-          <li>Coding</li>
-          <li>Graphic Design</li>
-          <li>See All</li>
-        </ul>
+        <Heading as="h4" size="xs" fontFamily="secondary">Coding</Heading>
+        <Heading as="h4" size="xs" fontFamily="secondary">Graphic Design</Heading>
+        <Heading as="h4" size="xs" fontFamily="secondary">See All</Heading>
       </div>
-      <div>
-
-        <Grid projects={context}></Grid>
-      </div>
+      <Grid projects={context}></Grid>
     </Bounded>
   );
 };

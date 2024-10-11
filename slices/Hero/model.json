@@ -48,6 +48,13 @@
             "select": null,
             "allowText": true
           }
+        },
+        "year": {
+          "type": "Text",
+          "config": {
+            "label": "Year",
+            "placeholder": ""
+          }
         }
       },
       "items": {}

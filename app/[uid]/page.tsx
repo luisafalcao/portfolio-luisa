@@ -13,7 +13,7 @@ export default async function Page({ params }: { params: Params }) {
         .getByUID("project", params.uid)
         .catch(() => notFound());
 
-    return <SliceZone slices={page.data.slices} components={components} />;
+    return <SliceZone slices={page.data.slices} components={components} context={page} />;
 }
 
 export async function generateMetadata({

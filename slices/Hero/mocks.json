@@ -52,6 +52,11 @@
 					"url": "https://prismic.io",
 					"text": "dull"
 				}
+			},
+			"year": {
+				"__TYPE__": "FieldContent",
+				"value": "knowledge",
+				"type": "Text"
 			}
 		},
 		"items": []
