@@ -1,12 +1,5 @@
+import { HeadingProps } from "@/app/types/customTypes"
 import clsx from "clsx"
-
-type HeadingProps = {
-    as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
-    size?: "xxl" | "xl" | "lg" | "md" | "sm" | "xs";
-    fontFamily?: "primary" | "secondary"
-    children: React.ReactNode;
-    className?: string;
-}
 
 export default function Heading({ as: Comp = "h2", className, children, size = "md", fontFamily = "primary" }: HeadingProps) {
     return (

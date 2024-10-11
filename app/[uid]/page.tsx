@@ -4,15 +4,17 @@ import { SliceZone } from "@prismicio/react";
 
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
+import { PrismicDocument } from "@prismicio/client";
 
 type Params = { uid: string };
 
 export default async function Page({ params }: { params: Params }) {
     const client = createClient();
-    const page = await client
+    const page: PrismicDocument = await client
         .getByUID("project", params.uid)
         .catch(() => notFound());
 
+    console.log("page", page)
     return <SliceZone slices={page.data.slices} components={components} context={page} />;
 }
 

@@ -13,8 +13,8 @@ export default function GridItem({ className, data, index, image }: GridItemProp
     }
 
     return (
-        <Link href={`/${uid[0]}`}>
-            <div className={clsx("relative min-w-40 min-h-36 p-5 flex justify-center items-center", className)}>
+        <Link href={`/${uid}`}>
+            <div className={clsx("relative w-full min-h-60 p-5 flex justify-center items-center", className)}>
                 <PrismicNextImage field={image} style={{ objectFit: "cover", width: "100%", height: "100%", position: "absolute" }}	></PrismicNextImage>
                 <p className="relative z-10">{title}</p>
             </div>

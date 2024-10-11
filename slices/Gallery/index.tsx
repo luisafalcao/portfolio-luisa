@@ -2,14 +2,10 @@ import { Content } from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
 import { SliceComponentProps } from "@prismicio/react";
 
-/**
- * Props for `Gallery`.
- */
+/*** Props for `Gallery`. */
 export type GalleryProps = SliceComponentProps<Content.GallerySlice>;
 
-/**
- * Component for "Gallery" Slices.
- */
+/*** Component for "Gallery" Slices. */
 const Gallery = ({ slice }: GalleryProps): JSX.Element => {
   return (
     <section

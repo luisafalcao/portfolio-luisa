@@ -1,5 +1,5 @@
 import Heading from "@/components/Heading";
-import { Content } from "@prismicio/client";
+import { Content, PrismicDocument } from "@prismicio/client";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 import { JSXMapSerializer, PrismicRichText, SliceComponentProps } from "@prismicio/react";
 
@@ -10,14 +10,13 @@ const components: JSXMapSerializer = {
 }
 
 /*** Props for `Hero`. */
-export type HeroProps = SliceComponentProps<Content.HeroSlice>;
+export type HeroProps = SliceComponentProps<Content.HeroSlice> & {
+  context: PrismicDocument
+};
 
 /*** Component for "Hero" Slices. */
 const Hero = ({ slice, context }: HeroProps): JSX.Element => {
   const { title } = context.data
-
-  // const heroSlice = context.data.slices.find(slice => slice.slice_type === 'hero')
-  // const { year, link_github, link_live_demo } = heroSlice.primary
   const { year, description, link_github, link_live_demo, main_image } = slice.primary
 
   return (

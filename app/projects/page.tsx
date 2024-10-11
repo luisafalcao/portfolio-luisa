@@ -3,11 +3,12 @@ import { SliceZone } from "@prismicio/react";
 
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
+import { PrismicDocument } from "@prismicio/client";
 
 export default async function Page() {
     const client = createClient();
-    const page = await client.getSingle("projects");
-    const pages = await client.getAllByType("project")
+    const page: PrismicDocument = await client.getSingle("projects");
+    const pages: PrismicDocument[] = await client.getAllByType("project")
 
     return (
         <>
