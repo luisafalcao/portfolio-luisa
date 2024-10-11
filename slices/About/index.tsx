@@ -1,13 +1,8 @@
 import { Content } from "@prismicio/client";
-import { JSXMapSerializer, PrismicRichText, SliceComponentProps } from "@prismicio/react";
+import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
+import { components } from "@/app/utils/serializers";
 import Bounded from "@/components/Bounded";
 import Heading from "@/components/Heading";
-
-const components: JSXMapSerializer = {
-  paragraph: ({ children }) => (
-    <p className="font-primary mb-6 last:mb-0">{children}</p>
-  )
-}
 
 /*** Props for `About`. */
 export type AboutProps = SliceComponentProps<Content.AboutSlice>;

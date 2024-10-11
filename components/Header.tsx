@@ -1,4 +1,6 @@
 import { createClient } from '@/prismicio';
+import { PrismicRichText } from '@prismicio/react';
+import { components } from '@/app/utils/serializers';
 import Heading from './Heading';
 import Bounded from './Bounded';
 
@@ -10,7 +12,7 @@ export default async function Header() {
         <Bounded flexDirection='column'>
             <Heading as="h1" size="xxl">{settings.data.site_title}</Heading>
             <Heading size="md" fontFamily="secondary">{settings.data.meta_description}</Heading>
-            <p>short paragraph</p>
+            <PrismicRichText field={settings.data.intro} components={components} />
         </Bounded>
     );
 }

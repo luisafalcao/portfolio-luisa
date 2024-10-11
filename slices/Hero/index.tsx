@@ -1,13 +1,8 @@
 import Heading from "@/components/Heading";
 import { Content, PrismicDocument } from "@prismicio/client";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
-import { JSXMapSerializer, PrismicRichText, SliceComponentProps } from "@prismicio/react";
-
-const components: JSXMapSerializer = {
-  paragraph: ({ children }) => (
-    <p className="font-primary">{children}</p>
-  )
-}
+import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
+import { components } from "@/app/utils/serializers";
 
 /*** Props for `Hero`. */
 export type HeroProps = SliceComponentProps<Content.HeroSlice> & {

@@ -20,6 +20,15 @@
           "placeholder": ""
         }
       },
+      "intro": {
+        "type": "StructuredText",
+        "config": {
+          "label": "Intro",
+          "placeholder": "",
+          "allowTargetBlank": false,
+          "single": "strong,em,heading4"
+        }
+      },
       "og_image": {
         "type": "Image",
         "config": {

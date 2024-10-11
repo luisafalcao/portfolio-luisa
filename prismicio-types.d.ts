@@ -273,6 +273,17 @@ interface SettingsDocumentData {
   meta_description: prismic.KeyTextField;
 
   /**
+   * Intro field in *Settings*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.intro
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  intro: prismic.RichTextField;
+
+  /**
    * OG Image field in *Settings*
    *
    * - **Field Type**: Image
