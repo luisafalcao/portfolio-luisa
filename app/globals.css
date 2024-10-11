@@ -9,6 +9,15 @@
     .bg-purple-yellow {
         background-image: linear-gradient(320deg, #fbfcdb 0%, #e9defa 100%);
     }
+    .bg-half {
+        background-image: linear-gradient(
+            90deg,
+            #f4f2ef 0%,
+            #f4f2ef 50%,
+            #f1eeeb 50%,
+            #f1eeeb 100%
+        );
+    }
 }
 
 @layer components {

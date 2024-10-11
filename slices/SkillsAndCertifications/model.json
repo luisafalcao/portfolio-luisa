@@ -1,0 +1,67 @@
+{
+  "id": "skills_and_certifications",
+  "type": "SharedSlice",
+  "name": "SkillsAndCertifications",
+  "description": "SkillsAndCertifications",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "certifications": {
+          "type": "Group",
+          "config": {
+            "label": "Certifications",
+            "repeat": true,
+            "fields": {
+              "certification": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Certification",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "multi": "paragraph,strong,em,hyperlink"
+                }
+              }
+            }
+          }
+        },
+        "skills": {
+          "type": "Group",
+          "config": {
+            "label": "Skills",
+            "repeat": true,
+            "fields": {
+              "skill": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Skill",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "multi": "paragraph"
+                }
+              },
+              "category": {
+                "type": "Select",
+                "config": {
+                  "label": "Category",
+                  "placeholder": "",
+                  "options": [
+                    "Coding",
+                    "Languages",
+                    "Graphic Design"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

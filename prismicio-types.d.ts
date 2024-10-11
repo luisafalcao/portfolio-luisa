@@ -5,6 +5,7 @@ import type * as prismic from "@prismicio/client";
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 type HomepageDocumentDataSlicesSlice =
+  | SkillsAndCertificationsSlice
   | ReposSlice
   | WorkSlice
   | ContactSlice
@@ -599,6 +600,106 @@ type ReposSliceVariation = ReposSliceDefault;
 export type ReposSlice = prismic.SharedSlice<"repos", ReposSliceVariation>;
 
 /**
+ * Item in *SkillsAndCertifications → Default → Primary → Certifications*
+ */
+export interface SkillsAndCertificationsSliceDefaultPrimaryCertificationsItem {
+  /**
+   * Certification field in *SkillsAndCertifications → Default → Primary → Certifications*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: skills_and_certifications.default.primary.certifications[].certification
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  certification: prismic.RichTextField;
+}
+
+/**
+ * Item in *SkillsAndCertifications → Default → Primary → Skills*
+ */
+export interface SkillsAndCertificationsSliceDefaultPrimarySkillsItem {
+  /**
+   * Skill field in *SkillsAndCertifications → Default → Primary → Skills*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: skills_and_certifications.default.primary.skills[].skill
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  skill: prismic.RichTextField;
+
+  /**
+   * Category field in *SkillsAndCertifications → Default → Primary → Skills*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: skills_and_certifications.default.primary.skills[].category
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  category: prismic.SelectField<"Coding" | "Languages" | "Graphic Design">;
+}
+
+/**
+ * Primary content in *SkillsAndCertifications → Default → Primary*
+ */
+export interface SkillsAndCertificationsSliceDefaultPrimary {
+  /**
+   * Certifications field in *SkillsAndCertifications → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: skills_and_certifications.default.primary.certifications[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  certifications: prismic.GroupField<
+    Simplify<SkillsAndCertificationsSliceDefaultPrimaryCertificationsItem>
+  >;
+
+  /**
+   * Skills field in *SkillsAndCertifications → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: skills_and_certifications.default.primary.skills[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  skills: prismic.GroupField<
+    Simplify<SkillsAndCertificationsSliceDefaultPrimarySkillsItem>
+  >;
+}
+
+/**
+ * Default variation for SkillsAndCertifications Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type SkillsAndCertificationsSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<SkillsAndCertificationsSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *SkillsAndCertifications*
+ */
+type SkillsAndCertificationsSliceVariation =
+  SkillsAndCertificationsSliceDefault;
+
+/**
+ * SkillsAndCertifications Shared Slice
+ *
+ * - **API ID**: `skills_and_certifications`
+ * - **Description**: SkillsAndCertifications
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type SkillsAndCertificationsSlice = prismic.SharedSlice<
+  "skills_and_certifications",
+  SkillsAndCertificationsSliceVariation
+>;
+
+/**
  * Item in *Work → Default → Primary → Navigation*
  */
 export interface WorkSliceDefaultPrimaryNavigationItem {
@@ -756,6 +857,12 @@ declare module "@prismicio/client" {
       ReposSlice,
       ReposSliceVariation,
       ReposSliceDefault,
+      SkillsAndCertificationsSlice,
+      SkillsAndCertificationsSliceDefaultPrimaryCertificationsItem,
+      SkillsAndCertificationsSliceDefaultPrimarySkillsItem,
+      SkillsAndCertificationsSliceDefaultPrimary,
+      SkillsAndCertificationsSliceVariation,
+      SkillsAndCertificationsSliceDefault,
       WorkSlice,
       WorkSliceDefaultPrimaryNavigationItem,
       WorkSliceDefaultPrimary,
