@@ -41,15 +41,23 @@ const Work = ({ slice, context }: WorkProps): JSX.Element => {
       isVariation={isVariation}
     >
       <div className={clsx("basis-1/3 flex flex-col items-start",
-        isVariation && "ml-8 mt-8"
+        isVariation && "ml-20 mt-20"
       )}>
         <Heading className="mb-10">Work</Heading>
 
-        {slice.primary.navigation.map((item, index) => {
-          return <Button key={index} size="xs" fontFamily="secondary" category={item.category} setCurrentCategory={setCurrentCategory}>{item.category}</Button>
-        })}
+        {
+          slice.primary.navigation.map((item, index) => {
+            return <Button key={index} size="xs" fontFamily="secondary" category={item.category} setCurrentCategory={setCurrentCategory}>{item.category}</Button>
+          })
+        }
 
-        <Heading as="h4" size="xs" fontFamily="secondary"><Link href="/projects">See All</Link></Heading>
+        {
+          isVariation ?
+            <Button size="xs" fontFamily="secondary" category={''} setCurrentCategory={setCurrentCategory}>See All</Button> :
+            <Heading as="h4" size="xs" fontFamily="secondary"><Link href="/projects">See All</Link></Heading>
+        }
+
+
       </div>
       <Grid className={clsx("basis-2/3",
         isVariation && "gap-0"
