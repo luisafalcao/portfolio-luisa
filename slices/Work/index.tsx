@@ -22,7 +22,9 @@ const Work = ({ slice, context }: WorkProps): JSX.Element => {
   const isVariation = slice.variation === "fullScreen" ? true : false
 
   function renderGridItems(array: PrismicDocument[]) {
-    return array.map((project: PrismicDocument, index: number) => {
+    let itemsToRender = isVariation ? array : array.slice(0, 6)
+
+    return itemsToRender.map((project: PrismicDocument, index: number) => {
       const infoSourceSlice: Slice = project.data.slices.find((slice: HeroSlice) => slice.slice_type === 'hero')
       const image: ImageField<never> | null = infoSourceSlice?.primary.main_image as ImageField<never> || null;
 
