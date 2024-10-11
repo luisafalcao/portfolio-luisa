@@ -10,3 +10,47 @@
         background-image: linear-gradient(320deg, #fbfcdb 0%, #e9defa 100%);
     }
 }
+
+@layer components {
+    .border-effect {
+        position: relative;
+        padding-left: 1rem; /* Adjust padding for space between text and border */
+    }
+
+    .border-effect::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        height: 0;
+        width: 2px; /* Thickness of the border */
+        background-color: black; /* Border color */
+        transform: translateY(-50%);
+        transition:
+            height 0.4s ease-in-out,
+            top 0.4s ease-in-out; /* Smooth transition */
+    }
+
+    .border-effect:hover::before {
+        height: 100%; /* Expand the border to full height */
+        top: 0; /* Move the starting point to the top */
+        transform: none; /* Align properly at the top */
+    }
+
+    .border-static {
+        position: relative;
+        padding-left: 1rem; /* Space between text and border */
+    }
+
+    .border-static::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%; /* Static from the top */
+        height: 100%; /* Full height for the static border */
+        width: 2px; /* Thickness of the border */
+        transform: translateY(-50%);
+        background-color: black; /* Border color */
+        transform-origin: center; /* Center point for transformation */
+    }
+}

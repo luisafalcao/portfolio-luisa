@@ -11,7 +11,7 @@ export type BoundedProps = {
 
 export type GridProps = {
     className?: string;
-    children: React.ReactNode | void;
+    children: React.ReactNode;
     flexDirection?: "row" | "column";
 }
 

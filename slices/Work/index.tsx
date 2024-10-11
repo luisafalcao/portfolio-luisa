@@ -47,14 +47,14 @@ const Work = ({ slice, context }: WorkProps): JSX.Element => {
 
         {
           slice.primary.navigation.map((item, index) => {
-            return <Button key={index} size="xs" fontFamily="secondary" category={item.category} setCurrentCategory={setCurrentCategory}>{item.category}</Button>
+            return <Button key={index} size="xs" fontFamily="secondary" category={item.category} setCurrentCategory={setCurrentCategory} className={clsx(item.category === currentCategory ? "border-static" : "border-effect")}>{item.category}</Button>
           })
         }
 
         {
           isVariation ?
-            <Button size="xs" fontFamily="secondary" category={''} setCurrentCategory={setCurrentCategory}>See All</Button> :
-            <Heading as="h4" size="xs" fontFamily="secondary"><Link href="/projects">See All</Link></Heading>
+            <Button size="xs" fontFamily="secondary" category={''} setCurrentCategory={setCurrentCategory} className={clsx(currentCategory === '' ? "border-static" : "border-effect")}>See All</Button> :
+            <Heading as="h4" size="xs" fontFamily="secondary" className={clsx(currentCategory === '' ? "border-static" : "border-effect")}><Link href="/projects">See All</Link></Heading>
         }
 
 
