@@ -156,6 +156,71 @@ export type ProjectDocument<Lang extends string = string> =
     Lang
   >;
 
+type ProjectsDocumentDataSlicesSlice = WorkSlice;
+
+/**
+ * Content for Projects documents
+ */
+interface ProjectsDocumentData {
+  /**
+   * Slice Zone field in *Projects*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: projects.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<ProjectsDocumentDataSlicesSlice> /**
+   * Meta Title field in *Projects*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: projects.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Projects*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: projects.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Projects*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: projects.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * Projects document from Prismic
+ *
+ * - **API ID**: `projects`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ProjectsDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithoutUID<
+    Simplify<ProjectsDocumentData>,
+    "projects",
+    Lang
+  >;
+
 /**
  * Item in *Settings → Navigation*
  */
@@ -249,6 +314,7 @@ export type SettingsDocument<Lang extends string = string> =
 export type AllDocumentTypes =
   | HomepageDocument
   | ProjectDocument
+  | ProjectsDocument
   | SettingsDocument;
 
 /**
@@ -481,6 +547,38 @@ type HeroSliceVariation = HeroSliceDefault;
 export type HeroSlice = prismic.SharedSlice<"hero", HeroSliceVariation>;
 
 /**
+ * Item in *Work → Default → Primary → Navigation*
+ */
+export interface WorkSliceDefaultPrimaryNavigationItem {
+  /**
+   * Category field in *Work → Default → Primary → Navigation*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: work.default.primary.navigation[].category
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  category: prismic.KeyTextField;
+}
+
+/**
+ * Primary content in *Work → Default → Primary*
+ */
+export interface WorkSliceDefaultPrimary {
+  /**
+   * Navigation field in *Work → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: work.default.primary.navigation[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  navigation: prismic.GroupField<
+    Simplify<WorkSliceDefaultPrimaryNavigationItem>
+  >;
+}
+
+/**
  * Default variation for Work Slice
  *
  * - **API ID**: `default`
@@ -489,7 +587,7 @@ export type HeroSlice = prismic.SharedSlice<"hero", HeroSliceVariation>;
  */
 export type WorkSliceDefault = prismic.SharedSliceVariation<
   "default",
-  Record<string, never>,
+  Simplify<WorkSliceDefaultPrimary>,
   never
 >;
 
@@ -534,6 +632,9 @@ declare module "@prismicio/client" {
       ProjectDocument,
       ProjectDocumentData,
       ProjectDocumentDataSlicesSlice,
+      ProjectsDocument,
+      ProjectsDocumentData,
+      ProjectsDocumentDataSlicesSlice,
       SettingsDocument,
       SettingsDocumentData,
       SettingsDocumentDataNavigationItem,
@@ -556,6 +657,8 @@ declare module "@prismicio/client" {
       HeroSliceVariation,
       HeroSliceDefault,
       WorkSlice,
+      WorkSliceDefaultPrimaryNavigationItem,
+      WorkSliceDefaultPrimary,
       WorkSliceVariation,
       WorkSliceDefault,
     };

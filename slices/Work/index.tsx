@@ -3,6 +3,7 @@ import { SliceComponentProps } from "@prismicio/react";
 import Bounded from "@/components/Bounded";
 import Heading from "@/components/Heading";
 import Grid from "@/components/Grid";
+import Link from "next/link";
 
 /*** Props for `Work`. */
 export type WorkProps = SliceComponentProps<Content.WorkSlice>;
@@ -16,9 +17,10 @@ const Work = ({ slice, context }: WorkProps): JSX.Element => {
     >
       <div>
         <Heading>Work</Heading>
-        <Heading as="h4" size="xs" fontFamily="secondary">Coding</Heading>
-        <Heading as="h4" size="xs" fontFamily="secondary">Graphic Design</Heading>
-        <Heading as="h4" size="xs" fontFamily="secondary">See All</Heading>
+        {slice.primary.navigation.map((item, index) => (
+          <Heading as="h4" key={index} size="xs" fontFamily="secondary">{item.category}</Heading>
+        ))}
+        <Heading as="h4" size="xs" fontFamily="secondary"><Link href="/projects">See All</Link></Heading>
       </div>
       <Grid projects={context}></Grid>
     </Bounded>
