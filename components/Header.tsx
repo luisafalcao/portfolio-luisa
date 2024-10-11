@@ -9,7 +9,7 @@ export default async function Header() {
     return (
         <Bounded flexDirection='column'>
             <Heading as="h1" size="xxl">{settings.data.site_title}</Heading>
-            <Heading size="xl" fontFamily="secondary">{settings.data.meta_description}</Heading>
+            <Heading size="md" fontFamily="secondary">{settings.data.meta_description}</Heading>
             <p>short paragraph</p>
         </Bounded>
     );
