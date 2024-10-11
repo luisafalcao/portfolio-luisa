@@ -20,7 +20,7 @@ const Hero = ({ slice, context }: HeroProps): JSX.Element => {
       data-slice-variation={slice.variation}
       className="flex flex-col md:flex-row w-full overflow-hidden"
     >
-      <div className="h-full basis-2/5 text-right p-10 self-end">
+      <div className="h-full basis-2/5 md:text-right p-10 md:self-end">
         <Heading as="h2" className="normal-case">{title}</Heading>
         <h3 className="italic">{year}</h3>
         <br />

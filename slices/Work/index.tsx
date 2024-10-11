@@ -40,28 +40,27 @@ const Work = ({ slice, context }: WorkProps): JSX.Element => {
       data-slice-variation={slice.variation}
       isVariation={isVariation}
     >
-      <div className={clsx("basis-1/3 flex flex-col items-start",
-        isVariation && "ml-20 mt-20"
+      <div className={clsx("basis-1/3 flex md:flex-col items-center justify-end md:justify-normal md:items-start gap-4 md:gap-1",
+        isVariation && "ml-20 mt-20 mr-20 md:mr-0"
       )}>
-        <Heading className="mb-10">Work</Heading>
+        <Heading className="md:mb-10 mr-auto md:ml-4">Work</Heading>
 
         {
           slice.primary.navigation.map((item, index) => {
-            return <Button key={index} size="xs" fontFamily="secondary" category={item.category} setCurrentCategory={setCurrentCategory} className={clsx(item.category === currentCategory ? "border-static" : "border-effect")}>{item.category}</Button>
+            return <Button key={index} size="xs" fontFamily="secondary" category={item.category} setCurrentCategory={setCurrentCategory} className={clsx(item.category === currentCategory ? "border-t-dark border-t-2 md:border-t-0 md:border-static" : "md:border-effect")}>{item.category}</Button>
           })
         }
 
         {
           isVariation ?
-            <Button size="xs" fontFamily="secondary" category={''} setCurrentCategory={setCurrentCategory} className={clsx(currentCategory === '' ? "border-static" : "border-effect")}>See All</Button> :
-            <Heading as="h4" size="xs" fontFamily="secondary" className={clsx(currentCategory === '' ? "border-static" : "border-effect")}><Link href="/projects">See All</Link></Heading>
+            <Button size="xs" fontFamily="secondary" category={''} setCurrentCategory={setCurrentCategory} className={clsx(currentCategory === '' ? "border-t-dark border-t-2 md:border-t-0 md:border-static" : "md:border-effect")}>See All</Button> :
+            <Heading as="h4" size="xs" fontFamily="secondary" className={clsx(currentCategory === '' ? "border-t-dark border-t-2 md:border-t-0 md:border-static" : "md:border-effect")}><Link href="/projects">See All</Link></Heading>
         }
 
 
       </div>
-      <Grid className={clsx("basis-2/3",
-        isVariation && "gap-0"
-      )}>
+      <Grid className={clsx("basis-2/3")}
+        isVariation={isVariation}>
         {
           currentCategory === '' ?
             renderGridItems(context) :

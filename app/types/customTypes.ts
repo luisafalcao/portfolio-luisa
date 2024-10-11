@@ -13,6 +13,7 @@ export type GridProps = {
     className?: string;
     children: React.ReactNode;
     flexDirection?: "row" | "column";
+    isVariation?: boolean;
 }
 
 export type GridItemProps = {
