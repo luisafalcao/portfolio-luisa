@@ -18,6 +18,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "repos": {
+              "type": "SharedSlice"
+            },
             "work": {
               "type": "SharedSlice"
             },

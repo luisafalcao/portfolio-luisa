@@ -4,7 +4,11 @@ import type * as prismic from "@prismicio/client";
 
 type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
-type HomepageDocumentDataSlicesSlice = WorkSlice | ContactSlice | AboutSlice;
+type HomepageDocumentDataSlicesSlice =
+  | ReposSlice
+  | WorkSlice
+  | ContactSlice
+  | AboutSlice;
 
 /**
  * Content for Homepage documents
@@ -383,6 +387,16 @@ export interface ContactSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   email: prismic.KeyTextField;
+
+  /**
+   * Message field in *Contact → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact.default.primary.message
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  message: prismic.RichTextField;
 }
 
 /**
@@ -558,6 +572,33 @@ type HeroSliceVariation = HeroSliceDefault;
 export type HeroSlice = prismic.SharedSlice<"hero", HeroSliceVariation>;
 
 /**
+ * Default variation for Repos Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ReposSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Record<string, never>,
+  never
+>;
+
+/**
+ * Slice variation for *Repos*
+ */
+type ReposSliceVariation = ReposSliceDefault;
+
+/**
+ * Repos Shared Slice
+ *
+ * - **API ID**: `repos`
+ * - **Description**: Repos
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ReposSlice = prismic.SharedSlice<"repos", ReposSliceVariation>;
+
+/**
  * Item in *Work → Default → Primary → Navigation*
  */
 export interface WorkSliceDefaultPrimaryNavigationItem {
@@ -667,6 +708,9 @@ declare module "@prismicio/client" {
       HeroSliceDefaultPrimary,
       HeroSliceVariation,
       HeroSliceDefault,
+      ReposSlice,
+      ReposSliceVariation,
+      ReposSliceDefault,
       WorkSlice,
       WorkSliceDefaultPrimaryNavigationItem,
       WorkSliceDefaultPrimary,

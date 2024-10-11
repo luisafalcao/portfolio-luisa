@@ -7,5 +7,6 @@ export const components = {
   contact: dynamic(() => import("./Contact")),
   gallery: dynamic(() => import("./Gallery")),
   hero: dynamic(() => import("./Hero")),
+  repos: dynamic(() => import("./Repos")),
   work: dynamic(() => import("./Work")),
 };

@@ -1,4 +1,5 @@
-import { ImageField, PrismicDocument } from "@prismicio/client";
+import { ImageField, KeyTextField, PrismicDocument } from "@prismicio/client";
+import { Dispatch, SetStateAction } from "react";
 
 export type BoundedProps = {
     as?: React.ElementType;
@@ -26,4 +27,24 @@ export type HeadingProps = {
     fontFamily?: "primary" | "secondary"
     children: React.ReactNode;
     className?: string;
+}
+
+export type ButtonProps = {
+    as?: "button";
+    size?: "xxl" | "xl" | "lg" | "md" | "sm" | "xs";
+    fontFamily?: "primary" | "secondary"
+    children: React.ReactNode;
+    className?: string;
+    category: KeyTextField;
+    setCurrentState: Dispatch<SetStateAction<KeyTextField>>;
+}
+
+export type Repo = {
+    id: number;
+    name: string;
+    html_url: string;
+}
+
+export type ReposProps = {
+    repos: Repo[];
 }

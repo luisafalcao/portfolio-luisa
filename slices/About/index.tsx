@@ -13,6 +13,7 @@ const About = ({ slice }: AboutProps): JSX.Element => {
     <Bounded
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
+      className="bg-light"
     >
       <Heading className="basis-1/3">About</Heading>
 

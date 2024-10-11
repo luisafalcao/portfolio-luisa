@@ -9,7 +9,7 @@ export default async function Header() {
     const settings = await client.getSingle('settings');
 
     return (
-        <Bounded flexDirection='column'>
+        <Bounded flexDirection='column' className='bg-yellow-purple'>
             <Heading as="h1" size="xxl">{settings.data.site_title}</Heading>
             <Heading size="md" fontFamily="secondary">{settings.data.meta_description}</Heading>
             <PrismicRichText field={settings.data.intro} components={components} />

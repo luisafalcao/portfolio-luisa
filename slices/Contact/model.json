@@ -18,6 +18,15 @@
             "label": "Email",
             "placeholder": ""
           }
+        },
+        "message": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Message",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "single": "paragraph,strong,em,hyperlink"
+          }
         }
       },
       "items": {}

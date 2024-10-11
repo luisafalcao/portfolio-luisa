@@ -7,6 +7,17 @@
 				"__TYPE__": "FieldContent",
 				"value": "organized",
 				"type": "Text"
+			},
+			"message": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Culpa sunt ea fugiat. Voluptate sint nostrud est ipsum qui duis esse nostrud sit occaecat. Deserunt officia et magna minim dolore dolore ipsum dolore magna."
+						}
+					}
+				]
 			}
 		},
 		"items": []
