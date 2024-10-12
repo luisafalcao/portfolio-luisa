@@ -346,6 +346,16 @@ export interface AboutSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   about: prismic.RichTextField;
+
+  /**
+   * Slice Name field in *About → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: about.default.primary.slice_name
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  slice_name: prismic.KeyTextField;
 }
 
 /**
@@ -398,6 +408,16 @@ export interface ContactSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   message: prismic.RichTextField;
+
+  /**
+   * Slice Name field in *Contact → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact.default.primary.slice_name
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  slice_name: prismic.KeyTextField;
 }
 
 /**
@@ -458,6 +478,16 @@ export interface GallerySliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#group
    */
   photos: prismic.GroupField<Simplify<GallerySliceDefaultPrimaryPhotosItem>>;
+
+  /**
+   * Slice Name field in *Gallery → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: gallery.default.primary.slice_name
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  slice_name: prismic.KeyTextField;
 }
 
 /**
@@ -543,6 +573,16 @@ export interface HeroSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   year: prismic.KeyTextField;
+
+  /**
+   * Slice Name field in *Hero → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.default.primary.slice_name
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  slice_name: prismic.KeyTextField;
 }
 
 /**
@@ -666,6 +706,16 @@ export interface SkillsAndCertificationsSliceDefaultPrimary {
   skills: prismic.GroupField<
     Simplify<SkillsAndCertificationsSliceDefaultPrimarySkillsItem>
   >;
+
+  /**
+   * Slice Name field in *SkillsAndCertifications → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: skills_and_certifications.default.primary.slice_name
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  slice_name: prismic.KeyTextField;
 }
 
 /**
@@ -744,6 +794,16 @@ export interface WorkSliceDefaultPrimary {
   navigation: prismic.GroupField<
     Simplify<WorkSliceDefaultPrimaryNavigationItem>
   >;
+
+  /**
+   * Slice Name field in *Work → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: work.default.primary.slice_name
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  slice_name: prismic.KeyTextField;
 }
 
 /**

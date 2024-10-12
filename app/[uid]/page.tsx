@@ -14,7 +14,6 @@ export default async function Page({ params }: { params: Params }) {
         .getByUID("project", params.uid)
         .catch(() => notFound());
 
-    console.log("page", page)
     return <SliceZone slices={page.data.slices} components={components} context={page} />;
 }
 

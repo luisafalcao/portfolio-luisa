@@ -131,6 +131,11 @@
 						]
 					}
 				]
+			},
+			"slice_name": {
+				"__TYPE__": "FieldContent",
+				"value": "refused",
+				"type": "Text"
 			}
 		},
 		"items": []

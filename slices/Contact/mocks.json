@@ -18,6 +18,11 @@
 						}
 					}
 				]
+			},
+			"slice_name": {
+				"__TYPE__": "FieldContent",
+				"value": "you",
+				"type": "Text"
 			}
 		},
 		"items": []

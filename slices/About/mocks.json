@@ -13,6 +13,11 @@
 						}
 					}
 				]
+			},
+			"slice_name": {
+				"__TYPE__": "FieldContent",
+				"value": "easily",
+				"type": "Text"
 			}
 		},
 		"items": []

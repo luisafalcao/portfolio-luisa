@@ -12,7 +12,6 @@
 							[
 								"photo",
 								{
-									"__TYPE__": "ImageContent",
 									"origin": {
 										"id": "main",
 										"url": "https://images.unsplash.com/photo-1547394765-185e1e68f34e",
@@ -30,12 +29,20 @@
 										},
 										"background": "transparent"
 									},
+									"credits": null,
+									"alt": null,
+									"__TYPE__": "ImageContent",
 									"thumbnails": {}
 								}
 							]
 						]
 					}
 				]
+			},
+			"slice_name": {
+				"__TYPE__": "FieldContent",
+				"value": "school",
+				"type": "Text"
 			}
 		},
 		"items": []
