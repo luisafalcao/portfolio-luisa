@@ -11,6 +11,12 @@ export const components: JSXMapSerializer = {
 
 export const lists: JSXMapSerializer = {
     paragraph: ({ children }) => (
-        <p className="mb-0 text-base leading-normal after:content-['•'] after:ml-0.5 after:text-dark after:text-2xl after:ml-4 last:after:content-['']">{children}</p>
+        <p className="mb-0 text-base md:text-xl leading-normal">{children}</p>
+    )
+}
+
+export const horizontalLists: JSXMapSerializer = {
+    paragraph: ({ children }) => (
+        <p className="mb-0 text-base md:text-xl leading-normal after:content-['•'] last:after:content-[''] after:text-dark after:text-2xl after:ml-4">{children}</p>
     )
 }

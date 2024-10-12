@@ -39,7 +39,7 @@ export default function RootLayout({
     return (
         <html
             lang="en"
-            className={clsx(montserrat.variable, sourceCodePro.variable, "text-dark bg-yellow-purple font-primary")}
+            className={clsx(montserrat.variable, sourceCodePro.variable, "text-dark bg-yellow-purple font-primary scroll-smooth")}
         >
             <body>
                 {children}
