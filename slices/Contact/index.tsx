@@ -13,8 +13,11 @@ const Contact = ({ slice }: ContactProps): JSX.Element => {
     <Bounded
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
+      id={slice.slice_type}
     >
-      <Heading className="basis-1/3">Contact</Heading>
+      <div className="basis-1/3">
+        <Heading>Contact</Heading>
+      </div>
 
       <div className="basis-2/3">
         <Heading as="h3" size="sm">Want to get in touch?</Heading>

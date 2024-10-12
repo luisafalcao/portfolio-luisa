@@ -55,13 +55,6 @@
             "label": "Year",
             "placeholder": ""
           }
-        },
-        "slice_name": {
-          "type": "Text",
-          "config": {
-            "label": "Slice Name",
-            "placeholder": ""
-          }
         }
       },
       "items": {}

@@ -38,11 +38,6 @@
 						]
 					}
 				]
-			},
-			"slice_name": {
-				"__TYPE__": "FieldContent",
-				"value": "school",
-				"type": "Text"
 			}
 		},
 		"items": []

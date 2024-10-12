@@ -4,6 +4,7 @@ import { Dispatch, SetStateAction } from "react";
 export type BoundedProps = {
     as?: React.ElementType;
     className?: string;
+    id?: string;
     children: React.ReactNode;
     flexDirection?: "row" | "column";
     isVariation?: boolean;
@@ -33,11 +34,10 @@ export type HeadingProps = {
 
 export type ButtonProps = {
     as?: "button";
-    size?: "xxl" | "xl" | "lg" | "md" | "sm" | "xs";
-    fontFamily?: "primary" | "secondary"
     children: React.ReactNode;
     className?: string;
-    category: KeyTextField;
+    category: KeyTextField | undefined;
+    currentCategory: KeyTextField;
     setCurrentCategory: Dispatch<SetStateAction<KeyTextField>>;
 }
 

@@ -23,7 +23,7 @@
 			},
 			"slice_name": {
 				"__TYPE__": "FieldContent",
-				"value": "like",
+				"value": "ten",
 				"type": "Text"
 			}
 		},
@@ -50,6 +50,11 @@
 						]
 					}
 				]
+			},
+			"slice_name": {
+				"__TYPE__": "FieldContent",
+				"value": "receive",
+				"type": "Text"
 			}
 		},
 		"items": [

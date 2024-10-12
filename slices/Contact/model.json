@@ -32,7 +32,7 @@
           "type": "Text",
           "config": {
             "label": "Slice Name",
-            "placeholder": ""
+            "placeholder": "Como vai aparecer no menu"
           }
         }
       },

@@ -6,6 +6,9 @@ export const components: JSXMapSerializer = {
     ),
     heading4: ({ children }) => (
         <h4 className="font-primary text-1xl md:text-2xl text-center">{children}</h4>
+    ),
+    hyperlink: ({ node, children }) => (
+        <a href={node.data.url} className="border-effect horizontal">{children}</a>
     )
 }
 

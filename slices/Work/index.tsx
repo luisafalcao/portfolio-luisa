@@ -22,7 +22,7 @@ const Work = ({ slice, context }: WorkProps): JSX.Element => {
   const isVariation = slice.variation === "fullScreen" ? true : false
 
   function renderGridItems(array: PrismicDocument[]) {
-    let itemsToRender = isVariation ? array : array.slice(0, 6)
+    const itemsToRender = isVariation ? array : array.slice(0, 6)
 
     return itemsToRender.map((project: PrismicDocument, index: number) => {
       const infoSourceSlice: Slice = project.data.slices.find((slice: HeroSlice) => slice.slice_type === 'hero')
@@ -39,6 +39,7 @@ const Work = ({ slice, context }: WorkProps): JSX.Element => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
       isVariation={isVariation}
+      id={slice.slice_type}
     >
       <div className={clsx("basis-1/3 flex md:flex-col items-center justify-end md:justify-normal md:items-start gap-4 md:gap-1",
         isVariation && "ml-20 mt-20 mr-20 md:mr-0"
@@ -47,20 +48,47 @@ const Work = ({ slice, context }: WorkProps): JSX.Element => {
 
         {
           slice.primary.navigation.map((item, index) => {
-            return <Button key={index} size="xs" fontFamily="secondary" category={item.category} setCurrentCategory={setCurrentCategory} className={clsx(item.category === currentCategory ? "border-t-dark border-t-2 md:border-t-0 md:border-static" : "md:border-effect")}>{item.category}</Button>
+            return (
+              <Heading
+                key={index}
+                size="xs"
+                fontFamily="secondary">
+                <Button
+                  category={item.category}
+                  setCurrentCategory={setCurrentCategory}
+                  currentCategory={currentCategory}>
+                  {item.category}
+                </Button>
+              </Heading>)
           })
         }
 
         {
           isVariation ?
-            <Button size="xs" fontFamily="secondary" category={''} setCurrentCategory={setCurrentCategory} className={clsx(currentCategory === '' ? "border-t-dark border-t-2 md:border-t-0 md:border-static" : "md:border-effect")}>See All</Button> :
-            <Heading as="h4" size="xs" fontFamily="secondary" className={clsx(currentCategory === '' ? "border-t-dark border-t-2 md:border-t-0 md:border-static" : "md:border-effect")}><Link href="/projects">See All</Link></Heading>
+            (<Heading
+              size="xs"
+              fontFamily="secondary">
+              <Button
+                category={''}
+                setCurrentCategory={setCurrentCategory}
+                currentCategory={currentCategory}>
+                See All
+              </Button>
+            </Heading>) :
+            (<Heading
+              as="h4"
+              size="xs"
+              fontFamily="secondary">
+              <Button
+                category={''}
+                setCurrentCategory={setCurrentCategory}
+                currentCategory={currentCategory}>
+                <Link href="/projects">See All</Link>
+              </Button>
+            </Heading>)
         }
-
-
       </div>
-      <Grid className={clsx("basis-2/3")}
-        isVariation={isVariation}>
+      <Grid className="basis-2/3" isVariation={isVariation}>
         {
           currentCategory === '' ?
             renderGridItems(context) :

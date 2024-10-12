@@ -57,11 +57,6 @@
 				"__TYPE__": "FieldContent",
 				"value": "knowledge",
 				"type": "Text"
-			},
-			"slice_name": {
-				"__TYPE__": "FieldContent",
-				"value": "taught",
-				"type": "Text"
 			}
 		},
 		"items": []

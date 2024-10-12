@@ -134,7 +134,7 @@
 			},
 			"slice_name": {
 				"__TYPE__": "FieldContent",
-				"value": "refused",
+				"value": "deeply",
 				"type": "Text"
 			}
 		},

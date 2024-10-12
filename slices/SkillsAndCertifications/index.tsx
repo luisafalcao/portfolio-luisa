@@ -5,8 +5,7 @@ import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { lists, horizontalLists } from "@/app/utils/serializers";
 
 /*** Props for `SkillsAndCertifications`. */
-export type SkillsAndCertificationsProps =
-  SliceComponentProps<Content.SkillsAndCertificationsSlice>;
+export type SkillsAndCertificationsProps = SliceComponentProps<Content.SkillsAndCertificationsSlice>;
 
 /*** Component for "SkillsAndCertifications" Slices. */
 const SkillsAndCertifications = ({ slice }: SkillsAndCertificationsProps): JSX.Element => {
@@ -16,6 +15,7 @@ const SkillsAndCertifications = ({ slice }: SkillsAndCertificationsProps): JSX.E
       data-slice-variation={slice.variation}
       className="bg-half"
       flexDirection="column"
+      id={slice.slice_type}
     >
       <div className="basis-1/2 flex flex-col text-center">
         <Heading >Certifications</Heading>

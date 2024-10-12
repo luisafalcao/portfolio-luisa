@@ -15,8 +15,10 @@ export default async function Navigation() {
                 <Heading as="h4" size='xs' fontFamily='secondary' className='hidden md:block'>{settings.data.meta_description}</Heading>
             </Link>
             <ul className='text-1xl md:text-2xl lowercase flex gap-3'>
-                {homepageSlices.map(({ primary }, index) => (
-                    <li key={index}>{primary.slice_name}</li>
+                {homepageSlices.map(({ primary, slice_type }, index) => (
+                    <li key={index} className='md:border-effect horizontal'>
+                        <Link href={`/#${slice_type}`}>{primary.slice_name}</Link>
+                    </li>
                 ))}
             </ul>
         </nav>
