@@ -9,7 +9,7 @@ export default function Heading({ as: Comp = "h2", className, children, size = "
             size === "lg" && "text-3xl md:text-4xl lg:text-5xl",
             size === "md" && "text-2xl md:text-3xl lg:text-4xl",
             size === "sm" && "text-1xl md:text-2xl lg:text-3xl",
-            size === "xs" && "text-sm md:text-1xl lg:text-2xl",
+            size === "xs" && "text-1xl md:text-1xl lg:text-2xl",
             fontFamily === "primary" && "font-primary font-bold",
             fontFamily === "secondary" && "font-secondary font-medium",
             className

@@ -10,8 +10,8 @@ export default async function Header() {
 
     return (
         <Bounded flexDirection='column' className='bg-yellow-purple'>
-            <Heading as="h1" size="xxl" className='text-center'>{settings.data.site_title}</Heading>
-            <Heading size="md" fontFamily="secondary" className='text-center mb-10 md:mb-0'>{settings.data.meta_description}</Heading>
+            <Heading as="h1" size="xxl" className='text-center mb-0'>{settings.data.site_title}</Heading>
+            <Heading size="md" fontFamily="secondary" className='text-center mb-10 md:mb-0 mt-0'>{settings.data.meta_description}</Heading>
             <PrismicRichText field={settings.data.intro} components={components} />
         </Bounded>
     );

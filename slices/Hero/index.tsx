@@ -30,7 +30,7 @@ const Hero = ({ slice, context }: HeroProps): JSX.Element => {
       </div>
 
       <div className="basis-3/5" >
-        <PrismicNextImage field={main_image} sizes="100%" style={{ objectFit: "cover" }} />
+        <PrismicNextImage field={main_image} width={1000} height={1000} quality={100} style={{ objectFit: "cover" }} />
       </div>
     </section>
   );
