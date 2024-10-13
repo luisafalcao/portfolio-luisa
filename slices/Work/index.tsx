@@ -10,6 +10,7 @@ import GridItem from "@/components/GridItem";
 import { useState } from "react";
 import Button from "@/components/Button";
 import clsx from "clsx";
+import { motion } from "framer-motion";
 
 /*** Props for `Work`. */
 export type WorkProps = SliceComponentProps<Content.WorkSlice> & {
@@ -28,8 +29,17 @@ const Work = ({ slice, context }: WorkProps): JSX.Element => {
       const infoSourceSlice: Slice = project.data.slices.find((slice: HeroSlice) => slice.slice_type === 'hero')
       const image: ImageField<never> | null = infoSourceSlice?.primary.main_image as ImageField<never> || null;
 
-      return (
-        <GridItem key={index} data={project} index={index} image={image} />
+      return isVariation ? (
+        <GridItem data={project} index={index} image={image} />
+      ) : (
+        <motion.div
+          key={index}
+          initial={{ opacity: 0, scale: 0 }} // Start with opacity 0 and slightly below
+          animate={{ opacity: 1, scale: 1 }} // Animate to opacity 1 and original position
+          exit={{ opacity: 0, scale: 0 }} // Animate out with fading and upward motion
+          transition={{ duration: 0.4, delay: index * 0.1 }}>
+          <GridItem data={project} index={index} image={image} />
+        </motion.div>
       )
     })
   }
@@ -40,6 +50,7 @@ const Work = ({ slice, context }: WorkProps): JSX.Element => {
       data-slice-variation={slice.variation}
       isVariation={isVariation}
       id={slice.slice_type}
+      className="bg-medium"
     >
       <div className={clsx("basis-1/3 flex md:flex-col items-center justify-end md:justify-normal md:items-start gap-4 md:gap-1",
         isVariation && "ml-20 mt-20 mr-20 md:mr-0"

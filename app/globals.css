@@ -2,20 +2,43 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+    --purple: #e9defa;
+    --light-purple: #ece5f3;
+    --yellow: #fbfcdb;
+    --light: #f4f2ef;
+    --medium: #f1eeeb;
+    --dark: #344955;
+}
+
 @layer utilities {
     .bg-yellow-purple {
-        background-image: linear-gradient(320deg, #e9defa 0%, #fbfcdb 100%);
+        background-image: linear-gradient(
+            320deg,
+            var(--purple) 0%,
+            var(--yellow) 100%
+        );
     }
+
     .bg-purple-yellow {
-        background-image: linear-gradient(320deg, #fbfcdb 0%, #e9defa 100%);
+        background-image: linear-gradient(
+            320deg,
+            var(--yellow) 0%,
+            var(--purple) 100%
+        );
     }
+
+    .bg-purple-light {
+        background-image: linear-gradient(var(--purple) 0%, var(--light) 100%);
+    }
+
     .bg-half {
         background-image: linear-gradient(
-            90deg,
-            #f4f2ef 0%,
-            #f4f2ef 50%,
-            #f1eeeb 50%,
-            #f1eeeb 100%
+            0deg,
+            var(--light) 0%,
+            var(--light) 50%,
+            var(--medium) 50%,
+            var(--medium) 100%
         );
     }
 }
@@ -89,5 +112,18 @@
         transform: translateY(-50%);
         background-color: black; /* Border color */
         transform-origin: center; /* Center point for transformation */
+    }
+
+    .navigation {
+        background-color: transparent;
+        animation: navigation linear forwards;
+        animation-timeline: view();
+        animation-range-start: 100px;
+    }
+
+    @keyframes navigation {
+        to {
+            background-color: var(--light);
+        }
     }
 }

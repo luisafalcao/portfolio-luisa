@@ -1,7 +1,7 @@
 import { GridProps } from "@/app/types/customTypes";
 import clsx from "clsx";
 
-export default function Grid({ className, children, flexDirection = "row", isVariation = false }: GridProps) {
+export default function Grid({ className, children, isVariation = false }: GridProps) {
 
     return (
         <div className={clsx("grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3",

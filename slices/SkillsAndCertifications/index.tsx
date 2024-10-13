@@ -13,7 +13,7 @@ const SkillsAndCertifications = ({ slice }: SkillsAndCertificationsProps): JSX.E
     <Bounded
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="bg-half"
+      className="bg-light"
       flexDirection="column"
       id={slice.slice_type}
     >

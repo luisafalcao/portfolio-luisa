@@ -14,6 +14,7 @@ const Contact = ({ slice }: ContactProps): JSX.Element => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
       id={slice.slice_type}
+      className="bg-purple-light"
     >
       <div className="basis-1/3">
         <Heading>Contact</Heading>

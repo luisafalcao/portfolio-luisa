@@ -10,13 +10,12 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
-        purple: "#e9defa",
-        yellow: "#fbfcdb",
-        light: "#f4f2ef",
-        medium: "#f1eeeb",
-        dark: "#344955",
+        purple: "var(--purple)",
+        lightPurple: "var(--light-purple)",
+        yellow: "var(--yellow)",
+        light: "var(--light)",
+        medium: "var(--medium)",
+        dark: "var(--dark)",
       },
       fontFamily: {
         primary: ["var(--font-montserrat)"],
