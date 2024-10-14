@@ -13,7 +13,7 @@
 								"category",
 								{
 									"__TYPE__": "FieldContent",
-									"value": "summer",
+									"value": "attack",
 									"type": "Text"
 								}
 							]
@@ -23,7 +23,7 @@
 			},
 			"slice_name": {
 				"__TYPE__": "FieldContent",
-				"value": "ten",
+				"value": "toy",
 				"type": "Text"
 			}
 		},

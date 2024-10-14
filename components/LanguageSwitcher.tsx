@@ -8,7 +8,7 @@ const localeLabels = {
 };
 
 export const LanguageSwitcher = ({ locales, className }: LanguageSwitcherProps) => (
-    <div className={clsx("flex flex-wrap gap-3", className)}>
+    <div className={clsx("absolute top-10 left-10", className)}>
         <ul className="flex flex-wrap gap-3">
             {locales.map((locale) => (
                 <li key={locale.lang} className="first:font-semibold">

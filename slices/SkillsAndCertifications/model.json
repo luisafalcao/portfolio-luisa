@@ -36,15 +36,6 @@
             "label": "Skills",
             "repeat": true,
             "fields": {
-              "skill": {
-                "type": "StructuredText",
-                "config": {
-                  "label": "Skill",
-                  "placeholder": "",
-                  "allowTargetBlank": true,
-                  "multi": "paragraph"
-                }
-              },
               "category": {
                 "type": "Select",
                 "config": {
@@ -56,6 +47,13 @@
                     "Graphic Design"
                   ]
                 }
+              },
+              "skill": {
+                "type": "Text",
+                "config": {
+                  "label": "Skill",
+                  "placeholder": ""
+                }
               }
             }
           }
@@ -64,7 +62,7 @@
           "type": "Text",
           "config": {
             "label": "Slice Name",
-            "placeholder": "Como vai aparecer no menu"
+            "placeholder": ""
           }
         }
       },

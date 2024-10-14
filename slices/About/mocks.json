@@ -16,7 +16,7 @@
 			},
 			"slice_name": {
 				"__TYPE__": "FieldContent",
-				"value": "common",
+				"value": "bigger",
 				"type": "Text"
 			}
 		},

@@ -25,9 +25,9 @@ export async function generateMetadata(): Promise<Metadata> {
         title: settings.data.site_title || 'Luisa Falcão',
         description:
             settings.data.meta_description || 'front-end developer & designer',
-        openGraph: {
-            images: [settings.data.og_image.url || ''],
-        },
+        // openGraph: {
+        //     images: [settings.data.og_image.url || ''],
+        // },
     };
 }
 
@@ -39,7 +39,7 @@ export default function RootLayout({
     return (
         <html
             lang="en"
-            className={clsx(montserrat.variable, sourceCodePro.variable, "text-dark font-primary scroll-smooth")}
+            className={clsx(montserrat.variable, sourceCodePro.variable, "text-dark font-primary scroll-smooth bg-light")}
         >
             <body>
                 {children}

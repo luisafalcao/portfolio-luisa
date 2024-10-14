@@ -9,7 +9,6 @@ import { getLocales } from "../utils/getLocales";
 export default async function Page({ params: { lang }, }: { params: { lang: string }; }) {
     const client = createClient();
     const home: PrismicDocument | null = await client.getByUID("homepage", "homepage", { lang });
-    console.log('Home:', home);
 
     if (!home) {
         throw new Error(`No homepage document found for lang: ${lang}`);
@@ -22,11 +21,10 @@ export default async function Page({ params: { lang }, }: { params: { lang: stri
 
     const locales = await getLocales(home, client)
 
-    console.log('Fetching homepage with lang:', lang);
     return (
         <>
             <Header locales={locales} />
-            <SliceZone slices={home.data.slices} components={components} context={pages} />
+            <SliceZone slices={home.data.slices} components={components} context={{ pages, lang }} />
         </>
     );
 }

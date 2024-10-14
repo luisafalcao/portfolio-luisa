@@ -17,7 +17,6 @@ export default async function Page({ params }: { params: Params }) {
         .catch(() => notFound());
     const locales = await getLocales(page, client);
 
-
     return (
         <>
             <LanguageSwitcher locales={locales} />
@@ -45,7 +44,7 @@ export async function generateMetadata({
 export async function generateStaticParams() {
     const client = createClient();
     const pages = await client.getAllByType("project", {
-        predicates: [prismic.filter.not('my.page.uid', 'homepage')],
+        predicates: [prismic.filter.not('my.project.uid', 'homepage')],
         lang: '*'
     });
 

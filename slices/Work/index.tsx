@@ -11,16 +11,18 @@ import { useState } from "react";
 import Button from "@/components/Button";
 import clsx from "clsx";
 import { motion } from "framer-motion";
+import { ContextWithPages } from "@/app/types/customTypes";
 
 /*** Props for `Work`. */
 export type WorkProps = SliceComponentProps<Content.WorkSlice> & {
-  context: PrismicDocument[]
+  context: ContextWithPages
 };
 
 /*** Component for "Work" Slices. */
 const Work = ({ slice, context }: WorkProps): JSX.Element => {
   const [currentCategory, setCurrentCategory] = useState<KeyTextField | null>('')
   const isVariation = slice.variation === "fullScreen" ? true : false
+  const { pages } = context
 
   function renderGridItems(array: PrismicDocument[]) {
     const itemsToRender = isVariation ? array : array.slice(0, 6)
@@ -55,7 +57,7 @@ const Work = ({ slice, context }: WorkProps): JSX.Element => {
       <div className={clsx("basis-1/3 flex md:flex-col items-center justify-end md:justify-normal md:items-start gap-4 md:gap-1",
         isVariation && "ml-20 mt-20 mr-20 md:mr-0"
       )}>
-        <Heading className="md:mb-10 mr-auto md:ml-4">Work</Heading>
+        <Heading className="md:mb-10 mr-auto md:ml-4">{slice.primary.slice_name}</Heading>
 
         {
           slice.primary.navigation.map((item, index) => {
@@ -102,8 +104,8 @@ const Work = ({ slice, context }: WorkProps): JSX.Element => {
       <Grid className="basis-2/3" isVariation={isVariation}>
         {
           currentCategory === '' ?
-            renderGridItems(context) :
-            renderGridItems(context.filter((project: PrismicDocument) => (project.tags[0] === currentCategory)))
+            renderGridItems(pages) :
+            renderGridItems(pages.filter((project: PrismicDocument) => (project.tags[0] === currentCategory)))
         }
       </Grid>
     </Bounded>

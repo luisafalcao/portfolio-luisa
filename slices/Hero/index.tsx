@@ -2,7 +2,7 @@ import Heading from "@/components/Heading";
 import { Content, PrismicDocument } from "@prismicio/client";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
-import { components } from "@/app/utils/serializers";
+import { headingWithHr } from "@/app/utils/serializers";
 
 /*** Props for `Hero`. */
 export type HeroProps = SliceComponentProps<Content.HeroSlice> & {
@@ -24,13 +24,13 @@ const Hero = ({ slice, context }: HeroProps): JSX.Element => {
         <Heading as="h2" className="normal-case">{title}</Heading>
         <h3 className="italic">{year}</h3>
         <br />
-        <PrismicRichText field={description} components={components} />
+        <PrismicRichText field={description} components={headingWithHr} />
         <hr className="border border-slate-600 my-3" />
         <PrismicNextLink field={link_github} className="font-secondary">{link_github.text}</PrismicNextLink> | <PrismicNextLink field={link_live_demo} className="font-secondary">{link_live_demo.text}</PrismicNextLink>
       </div>
 
       <div className="basis-3/5" >
-        <PrismicNextImage field={main_image} width={1000} height={1000} quality={100} style={{ objectFit: "cover" }} />
+        <PrismicNextImage field={main_image} height={1000} quality={100} style={{ objectFit: "cover" }} />
       </div>
     </section>
   );

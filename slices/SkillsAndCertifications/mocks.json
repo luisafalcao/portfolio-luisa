@@ -47,56 +47,19 @@
 						"__TYPE__": "GroupItemContent",
 						"value": [
 							[
-								"skill",
-								{
-									"__TYPE__": "StructuredTextContent",
-									"value": [
-										{
-											"type": "paragraph",
-											"content": {
-												"text": "English",
-												"spans": []
-											},
-											"direction": "ltr"
-										}
-									]
-								}
-							],
-							[
 								"category",
 								{
 									"__TYPE__": "FieldContent",
 									"value": "Coding",
 									"type": "Select"
 								}
-							]
-						]
-					},
-					{
-						"__TYPE__": "GroupItemContent",
-						"value": [
+							],
 							[
 								"skill",
 								{
-									"__TYPE__": "StructuredTextContent",
-									"value": [
-										{
-											"type": "paragraph",
-											"content": {
-												"text": "React",
-												"spans": []
-											},
-											"direction": "ltr"
-										}
-									]
-								}
-							],
-							[
-								"category",
-								{
 									"__TYPE__": "FieldContent",
-									"value": "Graphic Design",
-									"type": "Select"
+									"value": "record",
+									"type": "Text"
 								}
 							]
 						]
@@ -105,27 +68,40 @@
 						"__TYPE__": "GroupItemContent",
 						"value": [
 							[
-								"skill",
+								"category",
 								{
-									"__TYPE__": "StructuredTextContent",
-									"value": [
-										{
-											"type": "paragraph",
-											"content": {
-												"text": "Illustrator",
-												"spans": []
-											},
-											"direction": "ltr"
-										}
-									]
+									"__TYPE__": "FieldContent",
+									"value": "Graphic Design",
+									"type": "Select"
 								}
 							],
+							[
+								"skill",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "father",
+									"type": "Text"
+								}
+							]
+						]
+					},
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
 							[
 								"category",
 								{
 									"__TYPE__": "FieldContent",
 									"value": "Graphic Design",
 									"type": "Select"
+								}
+							],
+							[
+								"skill",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "muscle",
+									"type": "Text"
 								}
 							]
 						]
@@ -134,7 +110,7 @@
 			},
 			"slice_name": {
 				"__TYPE__": "FieldContent",
-				"value": "deeply",
+				"value": "world",
 				"type": "Text"
 			}
 		},

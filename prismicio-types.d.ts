@@ -6,7 +6,6 @@ type Simplify<T> = { [KeyType in keyof T]: T[KeyType] };
 
 type HomepageDocumentDataSlicesSlice =
   | SkillsAndCertificationsSlice
-  | ReposSlice
   | WorkSlice
   | ContactSlice
   | AboutSlice;
@@ -238,31 +237,6 @@ export type ProjectsDocument<Lang extends string = string> =
   >;
 
 /**
- * Item in *Settings → Navigation*
- */
-export interface SettingsDocumentDataNavigationItem {
-  /**
-   * Link field in *Settings → Navigation*
-   *
-   * - **Field Type**: Link
-   * - **Placeholder**: *None*
-   * - **API ID Path**: settings.navigation[].link
-   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
-   */
-  link: prismic.LinkField;
-
-  /**
-   * Label field in *Settings → Navigation*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: settings.navigation[].label
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  label: prismic.KeyTextField;
-}
-
-/**
  * Content for Settings documents
  */
 interface SettingsDocumentData {
@@ -291,35 +265,13 @@ interface SettingsDocumentData {
   /**
    * Intro field in *Settings*
    *
-   * - **Field Type**: Rich Text
+   * - **Field Type**: Text
    * - **Placeholder**: *None*
    * - **API ID Path**: settings.intro
    * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  intro: prismic.RichTextField;
-
-  /**
-   * OG Image field in *Settings*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: settings.og_image
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  og_image: prismic.ImageField<never>;
-
-  /**
-   * Navigation field in *Settings*
-   *
-   * - **Field Type**: Group
-   * - **Placeholder**: *None*
-   * - **API ID Path**: settings.navigation[]
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#group
-   */
-  navigation: prismic.GroupField<Simplify<SettingsDocumentDataNavigationItem>>;
+  intro: prismic.KeyTextField;
 }
 
 /**
@@ -362,7 +314,7 @@ export interface AboutSliceDefaultPrimary {
    * Slice Name field in *About → Default → Primary*
    *
    * - **Field Type**: Text
-   * - **Placeholder**: Como vai aparecer no menu
+   * - **Placeholder**: *None*
    * - **API ID Path**: about.default.primary.slice_name
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
@@ -424,7 +376,7 @@ export interface ContactSliceDefaultPrimary {
    * Slice Name field in *Contact → Default → Primary*
    *
    * - **Field Type**: Text
-   * - **Placeholder**: Como vai aparecer no menu
+   * - **Placeholder**: *None*
    * - **API ID Path**: contact.default.primary.slice_name
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
@@ -604,33 +556,6 @@ type HeroSliceVariation = HeroSliceDefault;
 export type HeroSlice = prismic.SharedSlice<"hero", HeroSliceVariation>;
 
 /**
- * Default variation for Repos Slice
- *
- * - **API ID**: `default`
- * - **Description**: Default
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type ReposSliceDefault = prismic.SharedSliceVariation<
-  "default",
-  Record<string, never>,
-  never
->;
-
-/**
- * Slice variation for *Repos*
- */
-type ReposSliceVariation = ReposSliceDefault;
-
-/**
- * Repos Shared Slice
- *
- * - **API ID**: `repos`
- * - **Description**: Repos
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type ReposSlice = prismic.SharedSlice<"repos", ReposSliceVariation>;
-
-/**
  * Item in *SkillsAndCertifications → Default → Primary → Certifications*
  */
 export interface SkillsAndCertificationsSliceDefaultPrimaryCertificationsItem {
@@ -650,16 +575,6 @@ export interface SkillsAndCertificationsSliceDefaultPrimaryCertificationsItem {
  */
 export interface SkillsAndCertificationsSliceDefaultPrimarySkillsItem {
   /**
-   * Skill field in *SkillsAndCertifications → Default → Primary → Skills*
-   *
-   * - **Field Type**: Rich Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: skills_and_certifications.default.primary.skills[].skill
-   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
-   */
-  skill: prismic.RichTextField;
-
-  /**
    * Category field in *SkillsAndCertifications → Default → Primary → Skills*
    *
    * - **Field Type**: Select
@@ -668,6 +583,16 @@ export interface SkillsAndCertificationsSliceDefaultPrimarySkillsItem {
    * - **Documentation**: https://prismic.io/docs/field#select
    */
   category: prismic.SelectField<"Coding" | "Languages" | "Graphic Design">;
+
+  /**
+   * Skill field in *SkillsAndCertifications → Default → Primary → Skills*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: skills_and_certifications.default.primary.skills[].skill
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  skill: prismic.KeyTextField;
 }
 
 /**
@@ -702,7 +627,7 @@ export interface SkillsAndCertificationsSliceDefaultPrimary {
    * Slice Name field in *SkillsAndCertifications → Default → Primary*
    *
    * - **Field Type**: Text
-   * - **Placeholder**: Como vai aparecer no menu
+   * - **Placeholder**: *None*
    * - **API ID Path**: skills_and_certifications.default.primary.slice_name
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
@@ -790,7 +715,7 @@ export interface WorkSliceDefaultPrimary {
    * Slice Name field in *Work → Default → Primary*
    *
    * - **Field Type**: Text
-   * - **Placeholder**: Como vai aparecer no menu
+   * - **Placeholder**: *None*
    * - **API ID Path**: work.default.primary.slice_name
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
@@ -896,7 +821,6 @@ declare module "@prismicio/client" {
       ProjectsDocumentDataSlicesSlice,
       SettingsDocument,
       SettingsDocumentData,
-      SettingsDocumentDataNavigationItem,
       AllDocumentTypes,
       AboutSlice,
       AboutSliceDefaultPrimary,
@@ -915,9 +839,6 @@ declare module "@prismicio/client" {
       HeroSliceDefaultPrimary,
       HeroSliceVariation,
       HeroSliceDefault,
-      ReposSlice,
-      ReposSliceVariation,
-      ReposSliceDefault,
       SkillsAndCertificationsSlice,
       SkillsAndCertificationsSliceDefaultPrimaryCertificationsItem,
       SkillsAndCertificationsSliceDefaultPrimarySkillsItem,

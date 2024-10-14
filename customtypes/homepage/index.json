@@ -28,9 +28,6 @@
             "skills_and_certifications": {
               "type": "SharedSlice"
             },
-            "repos": {
-              "type": "SharedSlice"
-            },
             "work": {
               "type": "SharedSlice"
             },

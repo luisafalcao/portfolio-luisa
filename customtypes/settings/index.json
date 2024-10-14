@@ -21,46 +21,10 @@
         }
       },
       "intro": {
-        "type": "StructuredText",
+        "type": "Text",
         "config": {
           "label": "Intro",
-          "placeholder": "",
-          "allowTargetBlank": false,
-          "single": "strong,em,heading4"
-        }
-      },
-      "og_image": {
-        "type": "Image",
-        "config": {
-          "label": "OG Image",
-          "constraint": {},
-          "thumbnails": []
-        }
-      },
-      "navigation": {
-        "type": "Group",
-        "config": {
-          "label": "Navigation",
-          "repeat": true,
-          "fields": {
-            "link": {
-              "type": "Link",
-              "config": {
-                "label": "Link",
-                "placeholder": "",
-                "allowTargetBlank": false,
-                "select": null,
-                "allowText": false
-              }
-            },
-            "label": {
-              "type": "Text",
-              "config": {
-                "label": "Label",
-                "placeholder": ""
-              }
-            }
-          }
+          "placeholder": ""
         }
       }
     }
