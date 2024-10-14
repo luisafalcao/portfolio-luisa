@@ -49,3 +49,12 @@ export type Repo = {
 export type ReposProps = {
     repos: Repo[];
 }
+
+export type LanguageSwitcherProps = {
+    locales: {
+        lang: string;
+        lang_name: string;
+        url: string;
+    }[],
+    className?: string;
+}
