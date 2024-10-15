@@ -22,29 +22,38 @@ export type WorkProps = SliceComponentProps<Content.WorkSlice> & {
 const Work = ({ slice, context }: WorkProps): JSX.Element => {
   const [currentCategory, setCurrentCategory] = useState<KeyTextField | null>('')
   const isVariation = slice.variation === "fullScreen" ? true : false
-  const { pages } = context
+  const { pages = [] } = context
 
   function renderGridItems(array: PrismicDocument[]) {
     const itemsToRender = isVariation ? array : array.slice(0, 6)
 
-    return itemsToRender.map((project: PrismicDocument, index: number) => {
-      const infoSourceSlice: Slice = project.data.slices.find((slice: HeroSlice) => slice.slice_type === 'hero')
-      const image: ImageField<never> | null = infoSourceSlice?.primary.main_image as ImageField<never> || null;
+    return itemsToRender.length > 0 ?
+      itemsToRender.map((project: PrismicDocument, index: number) => {
+        const infoSourceSlice: Slice | undefined = project.data.slices.find((slice: HeroSlice) => slice.slice_type === 'hero')
 
-      return isVariation ? (
-        <GridItem data={project} index={index} image={image} />
-      ) : (
-        <motion.div
-          key={index}
-          initial={{ opacity: 0, scale: 0 }} // Start with opacity 0 and slightly below
-          animate={{ opacity: 1, scale: 1 }} // Animate to opacity 1 and original position
-          exit={{ opacity: 0, scale: 0 }} // Animate out with fading and upward motion
-          transition={{ duration: 0.4, delay: index * 0.1 }}>
+        if (!infoSourceSlice) {
+          console.error(`No hero slice found for project ${project.id}`);
+          return null;
+        }
+
+        const image: ImageField<never> | null = infoSourceSlice?.primary.main_image as ImageField<never> || null;
+
+        return isVariation ? (
           <GridItem data={project} index={index} image={image} />
-        </motion.div>
-      )
-    })
+        ) : (
+          <motion.div
+            key={index}
+            initial={{ opacity: 0, scale: 0 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0 }}
+            transition={{ duration: 0.4, delay: index * 0.1 }}>
+            <GridItem data={project} index={index} image={image} />
+          </motion.div>
+        )
+      })
+      : null
   }
+
 
   return (
     <Bounded

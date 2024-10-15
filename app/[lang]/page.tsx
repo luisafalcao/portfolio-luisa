@@ -1,10 +1,10 @@
 import { Metadata } from "next";
-import { SliceZone } from "@prismicio/react";
 import { createClient } from "@/prismicio";
-import { components } from "@/slices";
+import { SliceZone } from "@prismicio/react";
 import { PrismicDocument } from "@prismicio/client";
+import { components } from "@/slices";
+import { getLocales } from "@/app/utils/getLocales";
 import Header from "@/components/Header";
-import { getLocales } from "../utils/getLocales";
 
 export default async function Page({ params: { lang }, }: { params: { lang: string }; }) {
     const client = createClient();

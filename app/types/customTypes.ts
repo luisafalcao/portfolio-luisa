@@ -62,3 +62,8 @@ export type LanguageSwitcherProps = {
 export type ContextWithPages = PrismicDocument & {
     pages: PrismicDocument[];
 };
+
+export type Params = {
+    uid: string;
+    lang?: string
+};

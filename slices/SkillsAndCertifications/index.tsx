@@ -13,7 +13,6 @@ export type SkillsAndCertificationsProps = SliceComponentProps<Content.SkillsAnd
 const SkillsAndCertifications = ({ slice, context }: SkillsAndCertificationsProps): JSX.Element => {
   const currentLang = context?.lang
 
-  console.log(currentLang)
   return (
     <Bounded
       data-slice-type={slice.slice_type}
@@ -23,16 +22,16 @@ const SkillsAndCertifications = ({ slice, context }: SkillsAndCertificationsProp
       id={slice.slice_type}
     >
       <div className="basis-1/2 flex flex-col text-center">
-        <Heading>Certifications</Heading>
+        <Heading>{currentLang === "en-us" ? "Certifications" : "Certificados"}</Heading>
         {slice.primary.certifications.map((item, index) => (
           <PrismicRichText key={index} field={item.certification} components={lists} />
         ))}
       </div>
 
       <div className="basis-1/2 flex flex-col text-center">
-        <Heading >Skills</Heading>
+        <Heading>{currentLang === "en-us" ? "Skills" : "Habilidades"}</Heading>
         <div className="flex justify-center items-end gap-4">
-          <Heading as="h3" size="xs" fontFamily="secondary" className="mb-0">Languages:</Heading>
+          <Heading as="h3" size="xs" fontFamily="secondary" className="mb-0">{currentLang === "en-us" ? "Languages:" : "Idiomas:"}</Heading>
           {slice.primary.skills.map((item, index) => {
             if (item.category === "Languages") {
               return <p key={index}>{item.skill}</p>
@@ -42,7 +41,7 @@ const SkillsAndCertifications = ({ slice, context }: SkillsAndCertificationsProp
         </div>
 
         <div className="flex justify-center items-end gap-4">
-          <Heading as="h3" size="xs" fontFamily="secondary" className="mb-0">Coding:</Heading>
+          <Heading as="h3" size="xs" fontFamily="secondary" className="mb-0">{currentLang === "en-us" ? "Coding:" : "Desenvolvimento:"}</Heading>
           {slice.primary.skills.map((item, index) => {
             if (item.category === "Coding") {
               return <p key={index}>{item.skill}</p>
@@ -52,7 +51,7 @@ const SkillsAndCertifications = ({ slice, context }: SkillsAndCertificationsProp
         </div>
 
         <div className="flex justify-center items-end gap-4">
-          <Heading as="h3" size="xs" fontFamily="secondary" className="mb-0">Graphic Design:</Heading>
+          <Heading as="h3" size="xs" fontFamily="secondary" className="mb-0">{currentLang === "en-us" ? "Graphic Design:" : "Design:"}</Heading>
           {slice.primary.skills.map((item, index) => {
             if (item.category === "Graphic Design") {
               return <p key={index}>{item.skill}</p>
