@@ -11,18 +11,16 @@ import { useState } from "react";
 import Button from "@/components/Button";
 import clsx from "clsx";
 import { motion } from "framer-motion";
-import { ContextWithPages } from "@/app/types/customTypes";
 
 /*** Props for `Work`. */
 export type WorkProps = SliceComponentProps<Content.WorkSlice> & {
-  context: ContextWithPages
+  context: PrismicDocument[]
 };
 
 /*** Component for "Work" Slices. */
 const Work = ({ slice, context }: WorkProps): JSX.Element => {
   const [currentCategory, setCurrentCategory] = useState<KeyTextField | null>('')
   const isVariation = slice.variation === "fullScreen" ? true : false
-  const { pages = [] } = context
 
   function renderGridItems(array: PrismicDocument[]) {
     const itemsToRender = isVariation ? array : array.slice(0, 6)
@@ -113,8 +111,8 @@ const Work = ({ slice, context }: WorkProps): JSX.Element => {
       <Grid className="basis-2/3" isVariation={isVariation}>
         {
           currentCategory === '' ?
-            renderGridItems(pages) :
-            renderGridItems(pages.filter((project: PrismicDocument) => (project.tags[0] === currentCategory)))
+            renderGridItems(context) :
+            renderGridItems(context.filter((project: PrismicDocument) => (project.tags[0] === currentCategory)))
         }
       </Grid>
     </Bounded>
