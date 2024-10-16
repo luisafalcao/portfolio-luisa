@@ -11,30 +11,46 @@ import { useState } from "react";
 import Button from "@/components/Button";
 import clsx from "clsx";
 import { motion } from "framer-motion";
+import { ContextWithPages } from "@/app/types/customTypes";
 
 /*** Props for `Work`. */
 export type WorkProps = SliceComponentProps<Content.WorkSlice> & {
-  context: PrismicDocument[]
+  context: PrismicDocument[] | ContextWithPages
 };
 
 /*** Component for "Work" Slices. */
 const Work = ({ slice, context }: WorkProps): JSX.Element => {
-  const [currentCategory, setCurrentCategory] = useState<KeyTextField | null>('')
-  const isVariation = slice.variation === "fullScreen" ? true : false
+  const [currentCategory, setCurrentCategory] = useState<KeyTextField | null>('');
+  const isVariation = slice.variation === "fullScreen" ? true : false;
+
+  // Descobrir se context é uma array de PrismicDocuments (PrismicDocument[]) 
+  // or if it's an object with the property 'pages':
+  function getProjectsArray(): PrismicDocument[] {
+    if (Array.isArray(context)) {
+      return context;
+    }
+    if (context && 'pages' in context && Array.isArray(context.pages)) {
+      return context.pages;
+    }
+    return [];
+  }
 
   function renderGridItems(array: PrismicDocument[]) {
-    const itemsToRender = isVariation ? array : array.slice(0, 6)
+    const itemsToRender = isVariation ? array : array.slice(0, 6);
 
-    return itemsToRender.length > 0 ?
-      itemsToRender.map((project: PrismicDocument, index: number) => {
-        const infoSourceSlice: Slice | undefined = project.data.slices.find((slice: HeroSlice) => slice.slice_type === 'hero')
+    return itemsToRender.length > 0
+      ? itemsToRender.map((project: PrismicDocument, index: number) => {
+        const infoSourceSlice: Slice | undefined = project.data.slices.find(
+          (slice: HeroSlice) => slice.slice_type === 'hero'
+        );
 
         if (!infoSourceSlice) {
           console.error(`No hero slice found for project ${project.id}`);
           return null;
         }
 
-        const image: ImageField<never> | null = infoSourceSlice?.primary.main_image as ImageField<never> || null;
+        const image: ImageField<never> | null =
+          (infoSourceSlice?.primary.main_image as ImageField<never>) || null;
 
         return isVariation ? (
           <GridItem data={project} index={index} image={image} />
@@ -44,14 +60,16 @@ const Work = ({ slice, context }: WorkProps): JSX.Element => {
             initial={{ opacity: 0, scale: 0 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0 }}
-            transition={{ duration: 0.4, delay: index * 0.1 }}>
+            transition={{ duration: 0.4, delay: index * 0.1 }}
+          >
             <GridItem data={project} index={index} image={image} />
           </motion.div>
-        )
+        );
       })
-      : null
+      : null;
   }
 
+  const projectsArray = getProjectsArray(); // Get the array of projects from context
 
   return (
     <Bounded
@@ -61,62 +79,60 @@ const Work = ({ slice, context }: WorkProps): JSX.Element => {
       id={slice.slice_type}
       className="bg-medium"
     >
-      <div className={clsx("basis-1/3 flex md:flex-col items-center justify-end md:justify-normal md:items-start gap-4 md:gap-1",
-        isVariation && "ml-20 mt-20 mr-20 md:mr-0"
-      )}>
+      <div
+        className={clsx(
+          "basis-1/3 flex md:flex-col items-center justify-end md:justify-normal md:items-start gap-4 md:gap-1",
+          isVariation && "ml-20 mt-20 mr-20 md:mr-0"
+        )}
+      >
         <Heading className="md:mb-10 mr-auto md:ml-4">{slice.primary.slice_name}</Heading>
 
-        {
-          slice.primary.navigation.map((item, index) => {
-            return (
-              <Heading
-                key={index}
-                size="xs"
-                fontFamily="secondary">
-                <Button
-                  category={item.category}
-                  setCurrentCategory={setCurrentCategory}
-                  currentCategory={currentCategory}>
-                  {item.category}
-                </Button>
-              </Heading>)
-          })
-        }
+        {slice.primary.navigation.map((item, index) => (
+          <Heading key={index} size="xs" fontFamily="secondary">
+            <Button
+              category={item.category}
+              setCurrentCategory={setCurrentCategory}
+              currentCategory={currentCategory}
+            >
+              {item.category}
+            </Button>
+          </Heading>
+        ))}
 
-        {
-          isVariation ?
-            (<Heading
-              size="xs"
-              fontFamily="secondary">
-              <Button
-                category={''}
-                setCurrentCategory={setCurrentCategory}
-                currentCategory={currentCategory}>
-                See All
-              </Button>
-            </Heading>) :
-            (<Heading
-              as="h4"
-              size="xs"
-              fontFamily="secondary">
-              <Button
-                category={''}
-                setCurrentCategory={setCurrentCategory}
-                currentCategory={currentCategory}>
-                <Link href="/projects">See All</Link>
-              </Button>
-            </Heading>)
-        }
+        {isVariation ? (
+          <Heading size="xs" fontFamily="secondary">
+            <Button
+              category={''}
+              setCurrentCategory={setCurrentCategory}
+              currentCategory={currentCategory}
+            >
+              See All
+            </Button>
+          </Heading>
+        ) : (
+          <Heading as="h4" size="xs" fontFamily="secondary">
+            <Button
+              category={''}
+              setCurrentCategory={setCurrentCategory}
+              currentCategory={currentCategory}
+            >
+              <Link href="/projects">See All</Link>
+            </Button>
+          </Heading>
+        )}
       </div>
       <Grid className="basis-2/3" isVariation={isVariation}>
-        {
-          currentCategory === '' ?
-            renderGridItems(context) :
-            renderGridItems(context.filter((project: PrismicDocument) => (project.tags[0] === currentCategory)))
-        }
+        {currentCategory === ''
+          ? renderGridItems(projectsArray)
+          : renderGridItems(
+            projectsArray.filter(
+              (project: PrismicDocument) => project.tags.find((tag) => tag === currentCategory) === currentCategory
+            )
+          )}
       </Grid>
     </Bounded>
   );
 };
 
 export default Work;
+
