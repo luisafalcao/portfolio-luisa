@@ -571,31 +571,6 @@ export interface SkillsAndCertificationsSliceDefaultPrimaryCertificationsItem {
 }
 
 /**
- * Item in *SkillsAndCertifications → Default → Primary → Skills*
- */
-export interface SkillsAndCertificationsSliceDefaultPrimarySkillsItem {
-  /**
-   * Category field in *SkillsAndCertifications → Default → Primary → Skills*
-   *
-   * - **Field Type**: Select
-   * - **Placeholder**: *None*
-   * - **API ID Path**: skills_and_certifications.default.primary.skills[].category
-   * - **Documentation**: https://prismic.io/docs/field#select
-   */
-  category: prismic.SelectField<"Coding" | "Languages" | "Graphic Design">;
-
-  /**
-   * Skill field in *SkillsAndCertifications → Default → Primary → Skills*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: skills_and_certifications.default.primary.skills[].skill
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  skill: prismic.KeyTextField;
-}
-
-/**
  * Primary content in *SkillsAndCertifications → Default → Primary*
  */
 export interface SkillsAndCertificationsSliceDefaultPrimary {
@@ -612,18 +587,6 @@ export interface SkillsAndCertificationsSliceDefaultPrimary {
   >;
 
   /**
-   * Skills field in *SkillsAndCertifications → Default → Primary*
-   *
-   * - **Field Type**: Group
-   * - **Placeholder**: *None*
-   * - **API ID Path**: skills_and_certifications.default.primary.skills[]
-   * - **Documentation**: https://prismic.io/docs/field#group
-   */
-  skills: prismic.GroupField<
-    Simplify<SkillsAndCertificationsSliceDefaultPrimarySkillsItem>
-  >;
-
-  /**
    * Slice Name field in *SkillsAndCertifications → Default → Primary*
    *
    * - **Field Type**: Text
@@ -632,6 +595,36 @@ export interface SkillsAndCertificationsSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   slice_name: prismic.KeyTextField;
+
+  /**
+   * Languages field in *SkillsAndCertifications → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: skills_and_certifications.default.primary.languages
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  languages: prismic.RichTextField;
+
+  /**
+   * Coding field in *SkillsAndCertifications → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: skills_and_certifications.default.primary.coding
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  coding: prismic.RichTextField;
+
+  /**
+   * Design field in *SkillsAndCertifications → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: skills_and_certifications.default.primary.design
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  design: prismic.RichTextField;
 }
 
 /**
@@ -841,7 +834,6 @@ declare module "@prismicio/client" {
       HeroSliceDefault,
       SkillsAndCertificationsSlice,
       SkillsAndCertificationsSliceDefaultPrimaryCertificationsItem,
-      SkillsAndCertificationsSliceDefaultPrimarySkillsItem,
       SkillsAndCertificationsSliceDefaultPrimary,
       SkillsAndCertificationsSliceVariation,
       SkillsAndCertificationsSliceDefault,

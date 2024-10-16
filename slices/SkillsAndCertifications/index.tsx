@@ -32,32 +32,23 @@ const SkillsAndCertifications = ({ slice, context }: SkillsAndCertificationsProp
         <Heading>{currentLang === "en-us" ? "Skills" : "Habilidades"}</Heading>
         <div className="flex justify-center items-end gap-4">
           <Heading as="h3" size="xs" fontFamily="secondary" className="mb-0">{currentLang === "en-us" ? "Languages:" : "Idiomas:"}</Heading>
-          {slice.primary.skills.map((item, index) => {
+          {/* {slice.primary.skills.map((item, index) => {
             if (item.category === "Languages") {
               return <p key={index}>{item.skill}</p>
             }
             return null
-          })}
+          })} */}
+          <PrismicRichText field={slice.primary.languages} components={lists} />
         </div>
 
         <div className="flex justify-center items-end gap-4">
           <Heading as="h3" size="xs" fontFamily="secondary" className="mb-0">{currentLang === "en-us" ? "Coding:" : "Desenvolvimento:"}</Heading>
-          {slice.primary.skills.map((item, index) => {
-            if (item.category === "Coding") {
-              return <p key={index}>{item.skill}</p>
-            }
-            return null
-          })}
+          <PrismicRichText field={slice.primary.coding} components={lists} />
         </div>
 
         <div className="flex justify-center items-end gap-4">
           <Heading as="h3" size="xs" fontFamily="secondary" className="mb-0">{currentLang === "en-us" ? "Graphic Design:" : "Design:"}</Heading>
-          {slice.primary.skills.map((item, index) => {
-            if (item.category === "Graphic Design") {
-              return <p key={index}>{item.skill}</p>
-            }
-            return null
-          })}
+          <PrismicRichText field={slice.primary.design} components={lists} />
         </div>
       </div>
     </Bounded >

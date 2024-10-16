@@ -40,78 +40,43 @@
 					}
 				]
 			},
-			"skills": {
-				"__TYPE__": "GroupContentType",
-				"value": [
-					{
-						"__TYPE__": "GroupItemContent",
-						"value": [
-							[
-								"category",
-								{
-									"__TYPE__": "FieldContent",
-									"value": "Coding",
-									"type": "Select"
-								}
-							],
-							[
-								"skill",
-								{
-									"__TYPE__": "FieldContent",
-									"value": "record",
-									"type": "Text"
-								}
-							]
-						]
-					},
-					{
-						"__TYPE__": "GroupItemContent",
-						"value": [
-							[
-								"category",
-								{
-									"__TYPE__": "FieldContent",
-									"value": "Graphic Design",
-									"type": "Select"
-								}
-							],
-							[
-								"skill",
-								{
-									"__TYPE__": "FieldContent",
-									"value": "father",
-									"type": "Text"
-								}
-							]
-						]
-					},
-					{
-						"__TYPE__": "GroupItemContent",
-						"value": [
-							[
-								"category",
-								{
-									"__TYPE__": "FieldContent",
-									"value": "Graphic Design",
-									"type": "Select"
-								}
-							],
-							[
-								"skill",
-								{
-									"__TYPE__": "FieldContent",
-									"value": "muscle",
-									"type": "Text"
-								}
-							]
-						]
-					}
-				]
-			},
 			"slice_name": {
 				"__TYPE__": "FieldContent",
 				"value": "world",
 				"type": "Text"
+			},
+			"languages": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Magna aliqua laboris sit incididunt."
+						}
+					}
+				]
+			},
+			"coding": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Adipisicing elit sunt sint nisi veniam. Excepteur dolor aliqua sint veniam duis cillum ullamco deserunt nisi eu enim Lorem. Incididunt nostrud tempor qui elit est proident labore."
+						}
+					}
+				]
+			},
+			"design": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Aute aute in velit veniam enim."
+						}
+					}
+				]
 			}
 		},
 		"items": []

@@ -30,39 +30,38 @@
             }
           }
         },
-        "skills": {
-          "type": "Group",
-          "config": {
-            "label": "Skills",
-            "repeat": true,
-            "fields": {
-              "category": {
-                "type": "Select",
-                "config": {
-                  "label": "Category",
-                  "placeholder": "",
-                  "options": [
-                    "Coding",
-                    "Languages",
-                    "Graphic Design"
-                  ]
-                }
-              },
-              "skill": {
-                "type": "Text",
-                "config": {
-                  "label": "Skill",
-                  "placeholder": ""
-                }
-              }
-            }
-          }
-        },
         "slice_name": {
           "type": "Text",
           "config": {
             "label": "Slice Name",
             "placeholder": ""
+          }
+        },
+        "languages": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Languages",
+            "placeholder": "",
+            "allowTargetBlank": false,
+            "multi": "list-item"
+          }
+        },
+        "coding": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Coding",
+            "placeholder": "",
+            "allowTargetBlank": false,
+            "multi": "list-item"
+          }
+        },
+        "design": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Design",
+            "placeholder": "",
+            "allowTargetBlank": false,
+            "multi": "list-item"
           }
         }
       },
