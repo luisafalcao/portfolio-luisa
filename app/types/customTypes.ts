@@ -55,7 +55,7 @@ export type LanguageSwitcherProps = {
         lang: string;
         lang_name: string;
         url: string;
-    }[],
+    }[] | string[] | undefined,
     className?: string;
 }
 
@@ -66,4 +66,14 @@ export type ContextWithPages = PrismicDocument & {
 export type Params = {
     uid: string;
     lang?: string
+};
+
+export type ContextProps = {
+    settings?: {
+        data: {
+            site_title: string;
+            meta_description: string;
+        };
+    };
+    locales?: string[];
 };

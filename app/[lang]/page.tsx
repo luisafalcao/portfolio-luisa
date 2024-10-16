@@ -4,11 +4,11 @@ import { SliceZone } from "@prismicio/react";
 import { PrismicDocument } from "@prismicio/client";
 import { components } from "@/slices";
 import { getLocales } from "@/app/utils/getLocales";
-import Header from "@/components/Header";
 
 export default async function Page({ params: { lang }, }: { params: { lang: string }; }) {
     const client = createClient();
     const home: PrismicDocument | null = await client.getByUID("homepage", "homepage", { lang });
+    const settings = await client.getSingle('settings');
 
     if (!home) {
         throw new Error(`No homepage document found for lang: ${lang}`);
@@ -23,8 +23,7 @@ export default async function Page({ params: { lang }, }: { params: { lang: stri
 
     return (
         <>
-            <Header locales={locales} />
-            <SliceZone slices={home.data.slices} components={components} context={{ pages, lang }} />
+            <SliceZone slices={home.data.slices} components={components} context={{ pages, lang, settings, locales }} />
         </>
     );
 }

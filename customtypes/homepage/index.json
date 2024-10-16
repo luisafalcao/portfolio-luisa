@@ -25,6 +25,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "header": {
+              "type": "SharedSlice"
+            },
             "skills_and_certifications": {
               "type": "SharedSlice"
             },

@@ -4,14 +4,18 @@ import { SliceZone } from "@prismicio/react";
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 import { PrismicDocument } from "@prismicio/client";
+import { getLocales } from "@/app/utils/getLocales";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 
 export default async function Page() {
     const client = createClient();
     const page: PrismicDocument = await client.getSingle("projects");
     const pages: PrismicDocument[] = await client.getAllByType("project")
+    const locales = await getLocales(page, client);
 
     return (
         <>
+            <LanguageSwitcher locales={locales} />
             <SliceZone slices={page.data.slices} components={components} context={pages} />
         </>
     );
