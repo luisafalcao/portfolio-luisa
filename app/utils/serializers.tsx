@@ -22,6 +22,15 @@ export const mainStyle: JSXMapSerializer = {
     )
 }
 
+export const styleVariation: JSXMapSerializer = {
+    paragraph: ({ children }) => (
+        <p className="mb-0 text-base md:text-xl leading-normal">{children}</p>
+    ),
+    heading5: ({ children }) => (
+        <Heading as="h5" size="xs" fontFamily="secondary" className="normal-case mb-0">{children}</Heading>
+    )
+}
+
 export const headingWithHr: JSXMapSerializer = {
     paragraph: ({ children }) => (
         <p className="font-primary text-base md:text-xl mb-6 last:mb-0 leading-normal">{children}</p>
@@ -34,17 +43,5 @@ export const headingWithHr: JSXMapSerializer = {
     ),
     hyperlink: ({ node, children }) => (
         <a href={node.data.url} className="border-effect horizontal">{children}</a>
-    )
-}
-
-export const lists: JSXMapSerializer = {
-    paragraph: ({ children }) => (
-        <p className="mb-0 text-base md:text-xl leading-normal">{children}</p>
-    )
-}
-
-export const horizontalLists: JSXMapSerializer = {
-    paragraph: ({ children }) => (
-        <p className="mb-0 text-base md:text-xl leading-normal after:content-['•'] last:after:content-[''] after:text-dark after:text-2xl after:ml-4">{children}</p>
     )
 }
