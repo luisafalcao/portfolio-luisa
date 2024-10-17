@@ -1,18 +1,20 @@
 import Heading from "@/components/Heading";
-import { Content, PrismicDocument } from "@prismicio/client";
+import { Content } from "@prismicio/client";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { headingWithHr } from "@/app/utils/serializers";
 import ProjectNav from "@/components/ProjectNav";
+import { ContextProps } from "@/app/types/customTypes";
 
 /*** Props for `Hero`. */
 export type HeroProps = SliceComponentProps<Content.HeroSlice> & {
-  context: PrismicDocument
+  context: ContextProps;
 };
 
 /*** Component for "Hero" Slices. */
 const Hero = ({ slice, context }: HeroProps): JSX.Element => {
-  const { title } = context.data
+  const { title } = context.page?.data
+  const { uid } = context.page
   const { year, description, link_github, link_live_demo, main_image } = slice.primary
 
   return (
@@ -21,8 +23,8 @@ const Hero = ({ slice, context }: HeroProps): JSX.Element => {
       data-slice-variation={slice.variation}
       className="flex flex-col md:flex-row w-full overflow-hidden min-h-[50vh]"
     >
-      <div className="flex-grow basis-2/5 md:text-right p-10 md:self-end self-stretch flex flex-col">
-        <ProjectNav className="sadsa" />
+      <div className="flex-grow basis-2/5 md:text-right p-10  self-stretch flex flex-col justify-between">
+        <ProjectNav uid={uid} title={title} projectsArray={context.pages} />
         <div>
           <Heading as="h2" className="normal-case">{title}</Heading>
           <h3 className="italic">{year}</h3>

@@ -12,6 +12,7 @@ import Button from "@/components/Button";
 import clsx from "clsx";
 import { motion } from "framer-motion";
 import { ContextWithPages } from "@/app/types/customTypes";
+import { getProjectsArray } from "@/app/utils/getProjectsArray";
 
 /*** Props for `Work`. */
 export type WorkProps = SliceComponentProps<Content.WorkSlice> & {
@@ -22,18 +23,6 @@ export type WorkProps = SliceComponentProps<Content.WorkSlice> & {
 const Work = ({ slice, context }: WorkProps): JSX.Element => {
   const [currentCategory, setCurrentCategory] = useState<KeyTextField | null>('');
   const isVariation = slice.variation === "fullScreen" ? true : false;
-
-  // Descobrir se context é uma array de PrismicDocuments (PrismicDocument[]) 
-  // or if it's an object with the property 'pages':
-  function getProjectsArray(): PrismicDocument[] {
-    if (Array.isArray(context)) {
-      return context;
-    }
-    if (context && 'pages' in context && Array.isArray(context.pages)) {
-      return context.pages;
-    }
-    return [];
-  }
 
   function renderGridItems(array: PrismicDocument[]) {
     const itemsToRender = isVariation ? array : array.slice(0, 6);
@@ -69,7 +58,7 @@ const Work = ({ slice, context }: WorkProps): JSX.Element => {
       : null;
   }
 
-  const projectsArray = getProjectsArray(); // Get the array of projects from context
+  const projectsArray = getProjectsArray(context); // Get the array of projects from context
 
   return (
     <Bounded

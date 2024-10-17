@@ -2,7 +2,9 @@ import { ImageField, KeyTextField, PrismicDocument } from "@prismicio/client";
 import { Dispatch, SetStateAction } from "react";
 
 export type ProjectNavProps = {
-    className?: string;
+    uid: string | null;
+    projectsArray: PrismicDocument[] | undefined;
+    title: string
 }
 
 export type BoundedProps = {
@@ -80,4 +82,6 @@ export type ContextProps = {
         };
     };
     locales?: string[];
+    page?: PrismicDocument;
+    pages?: PrismicDocument[]
 };

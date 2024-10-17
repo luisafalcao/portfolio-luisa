@@ -14,11 +14,15 @@ export default async function Page({ params }: { params: Params }) {
         .getByUID("project", params.uid, { lang: params.lang })
         .catch(() => notFound());
     const locales = await getLocales(page, client);
+    const pages = await client.getAllByType("project", {
+        predicates: [filter.not('my.project.uid', 'homepage')],
+        lang: '*'
+    });
 
     return (
         <>
             <LanguageSwitcher locales={locales} />
-            <SliceZone slices={page.data.slices} components={components} context={page} />
+            <SliceZone slices={page.data.slices} components={components} context={{ pages, page }} />
         </>
     )
 }
