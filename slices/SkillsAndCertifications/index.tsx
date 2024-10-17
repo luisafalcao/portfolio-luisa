@@ -21,24 +21,24 @@ const SkillsAndCertifications = ({ slice, context }: SkillsAndCertificationsProp
       flexDirection="column"
       id={slice.slice_type}
     >
-      <div className="basis-1/2 flex flex-col text-center">
+      <div className="basis-1/2 flex flex-col w-full">
         <Heading>{currentLang === "en-us" ? "Skills" : "Habilidades"}</Heading>
-        <div className="flex flex-col md:flex-row justify-center items-center md:items-end md:gap-4">
+        <div className="flex flex-col md:flex-row  items-center md:items-end md:gap-4">
           <Heading as="h3" size="xs" fontFamily="secondary" className="mb-0">{currentLang === "en-us" ? "Languages:" : "Idiomas:"}</Heading>
           <PrismicRichText field={slice.primary.languages} components={styleVariation} />
         </div>
 
-        <div className="flex flex-col md:flex-row justify-center items-center md:items-end md:gap-4">
+        <div className="flex flex-col md:flex-row  items-center md:items-end md:gap-4">
           <Heading as="h3" size="xs" fontFamily="secondary" className="mb-0">{currentLang === "en-us" ? "Coding:" : "Desenvolvimento:"}</Heading>
           <PrismicRichText field={slice.primary.coding} components={styleVariation} />
         </div>
 
-        <div className="flex flex-col md:flex-row justify-center items-center md:items-end md:gap-4">
+        <div className="flex flex-col md:flex-row  items-center md:items-end md:gap-4">
           <Heading as="h3" size="xs" fontFamily="secondary" className="mb-0">{currentLang === "en-us" ? "Graphic Design:" : "Design:"}</Heading>
           <PrismicRichText field={slice.primary.design} components={styleVariation} />
         </div>
       </div>
-      <div className="basis-1/2 flex flex-col text-center mt-10 md:mt-5">
+      <div className="basis-1/2 flex flex-col mt-10 md:mt-5 w-full">
         <Heading>{currentLang === "en-us" ? "Certifications" : "Certificados"}</Heading>
         {slice.primary.certifications.map((item, index) => (
           <PrismicRichText key={index} field={item.certification} components={styleVariation} />

@@ -24,7 +24,7 @@ export const mainStyle: JSXMapSerializer = {
 
 export const styleVariation: JSXMapSerializer = {
     paragraph: ({ children }) => (
-        <p className="mb-0 text-base md:text-xl leading-normal">{children}</p>
+        <p className="mb-0 text-base md:text-xl leading-normal w-max">{children}</p>
     ),
     heading5: ({ children }) => (
         <Heading as="h5" size="xs" fontFamily="secondary" className="normal-case mb-0">{children}</Heading>

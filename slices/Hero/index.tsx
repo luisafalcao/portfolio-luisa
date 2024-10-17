@@ -3,6 +3,7 @@ import { Content, PrismicDocument } from "@prismicio/client";
 import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { headingWithHr } from "@/app/utils/serializers";
+import ProjectNav from "@/components/ProjectNav";
 
 /*** Props for `Hero`. */
 export type HeroProps = SliceComponentProps<Content.HeroSlice> & {
@@ -18,15 +19,18 @@ const Hero = ({ slice, context }: HeroProps): JSX.Element => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="flex flex-col md:flex-row w-full overflow-hidden"
+      className="flex flex-col md:flex-row w-full overflow-hidden min-h-[50vh]"
     >
-      <div className="h-full basis-2/5 md:text-right p-10 md:self-end">
-        <Heading as="h2" className="normal-case">{title}</Heading>
-        <h3 className="italic">{year}</h3>
-        <br />
-        <PrismicRichText field={description} components={headingWithHr} />
-        <hr className="border border-slate-600 my-3" />
-        <PrismicNextLink field={link_github} className="font-secondary">{link_github.text}</PrismicNextLink> | <PrismicNextLink field={link_live_demo} className="font-secondary">{link_live_demo.text}</PrismicNextLink>
+      <div className="flex-grow basis-2/5 md:text-right p-10 md:self-end self-stretch flex flex-col">
+        <ProjectNav className="sadsa" />
+        <div>
+          <Heading as="h2" className="normal-case">{title}</Heading>
+          <h3 className="italic">{year}</h3>
+          <br />
+          <PrismicRichText field={description} components={headingWithHr} />
+          <hr className="border border-slate-600 my-3" />
+          <PrismicNextLink field={link_github} className="font-secondary">{link_github.text}</PrismicNextLink> | <PrismicNextLink field={link_live_demo} className="font-secondary">{link_live_demo.text}</PrismicNextLink>
+        </div>
       </div>
 
       <div className="basis-3/5" >

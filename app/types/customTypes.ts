@@ -1,6 +1,10 @@
 import { ImageField, KeyTextField, PrismicDocument } from "@prismicio/client";
 import { Dispatch, SetStateAction } from "react";
 
+export type ProjectNavProps = {
+    className?: string;
+}
+
 export type BoundedProps = {
     as?: React.ElementType;
     className?: string;
