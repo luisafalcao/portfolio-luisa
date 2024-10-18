@@ -2,7 +2,7 @@ import { ProjectNavProps } from "@/app/types/customTypes"
 import { getNextProject } from "@/app/utils/getProjectsArray";
 
 export default async function ProjectNav({ uid, projectsArray }: ProjectNavProps) {
-    getNextProject(projectsArray, uid)
+    // getNextProject(projectsArray, uid)
     return (
         <div className="flex justify-end">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">

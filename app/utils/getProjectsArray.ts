@@ -15,6 +15,11 @@ function getProjectsArray(context: PrismicDocument[] | ContextWithPages): Prismi
 
 function getNextProject(array: PrismicDocument[], currentUid: string) {
     const currentItem = array.find(item => item.data.uid === currentUid)
+
+    if (!currentItem) {
+        return null; // Return null or handle the case when the project is not found
+    }
+
     const index = array.indexOf(currentItem)
 
     if (index !== -1 && index < array.length - 1) {
@@ -25,6 +30,11 @@ function getNextProject(array: PrismicDocument[], currentUid: string) {
 
 function getPreviousProject(array: PrismicDocument[], currentUid: string) {
     const currentItem = array.find(item => item.data.uid === currentUid)
+
+    if (!currentItem) {
+        return null; // Return null or handle the case when the project is not found
+    }
+
     const index = array.indexOf(currentItem)
 
     if (index !== -1 && index < array.length - 1) {

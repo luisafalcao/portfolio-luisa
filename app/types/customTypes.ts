@@ -2,7 +2,7 @@ import { ImageField, KeyTextField, PrismicDocument } from "@prismicio/client";
 import { Dispatch, SetStateAction } from "react";
 
 export type ProjectNavProps = {
-    uid: string | null;
+    uid: string | null | undefined;
     projectsArray: PrismicDocument[] | undefined;
     title: string
 }

@@ -13,8 +13,8 @@ export type HeroProps = SliceComponentProps<Content.HeroSlice> & {
 
 /*** Component for "Hero" Slices. */
 const Hero = ({ slice, context }: HeroProps): JSX.Element => {
-  const { title } = context.page?.data
-  const { uid } = context.page
+  const { title } = context.page?.data ?? {}
+  const { uid } = context.page ?? {}
   const { year, description, link_github, link_live_demo, main_image } = slice.primary
 
   return (
