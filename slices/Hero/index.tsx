@@ -15,17 +15,19 @@ export type HeroProps = SliceComponentProps<Content.HeroSlice> & {
 const Hero = ({ slice, context }: HeroProps): JSX.Element => {
   const { title } = context.page?.data ?? {}
   const { uid } = context.page ?? {}
+  const { lang } = context.page ?? {}
   const { year, description, link_github, link_live_demo, main_image } = slice.primary
 
+  console.log()
   return (
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
       className="flex flex-col md:flex-row w-full overflow-hidden min-h-[50vh]"
     >
-      <div className="flex-grow basis-2/5 md:text-right p-10  self-stretch flex flex-col justify-between">
-        <ProjectNav uid={uid} title={title} projectsArray={context.uniquePages} />
-        <div>
+      <div className="flex-grow basis-2/5 md:text-right p-10 md:p-24 md:pt-10 self-stretch flex flex-col justify-between">
+        <ProjectNav uid={uid} title={title} projectsArray={context.uniquePages} currentLang={lang} />
+        <div className="mt-5 md:mt-0">
           <Heading as="h2" className="normal-case">{title}</Heading>
           <h3 className="italic">{year}</h3>
           <br />

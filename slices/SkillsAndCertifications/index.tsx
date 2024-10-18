@@ -39,7 +39,7 @@ const SkillsAndCertifications = ({ slice, context }: SkillsAndCertificationsProp
         </div>
       </div>
       <div className="basis-1/2 flex flex-col mt-10 md:mt-5 w-full">
-        <Heading>{currentLang === "en-us" ? "Certifications" : "Certificados"}</Heading>
+        <Heading>{currentLang === "en-us" ? "Certifications and Degrees" : "Certificados e Diplomas"}</Heading>
         {slice.primary.certifications.map((item, index) => (
           <PrismicRichText key={index} field={item.certification} components={styleVariation} />
         ))}

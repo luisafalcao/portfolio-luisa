@@ -12,13 +12,6 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
-        "email": {
-          "type": "Text",
-          "config": {
-            "label": "Email",
-            "placeholder": ""
-          }
-        },
         "message": {
           "type": "StructuredText",
           "config": {

@@ -354,16 +354,6 @@ export type AboutSlice = prismic.SharedSlice<"about", AboutSliceVariation>;
  */
 export interface ContactSliceDefaultPrimary {
   /**
-   * Email field in *Contact → Default → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: contact.default.primary.email
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  email: prismic.KeyTextField;
-
-  /**
    * Message field in *Contact → Default → Primary*
    *
    * - **Field Type**: Rich Text

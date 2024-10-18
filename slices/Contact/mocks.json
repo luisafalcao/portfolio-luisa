@@ -3,11 +3,6 @@
 		"__TYPE__": "SharedSliceContent",
 		"variation": "default",
 		"primary": {
-			"email": {
-				"__TYPE__": "FieldContent",
-				"value": "organized",
-				"type": "Text"
-			},
 			"message": {
 				"__TYPE__": "StructuredTextContent",
 				"value": [
