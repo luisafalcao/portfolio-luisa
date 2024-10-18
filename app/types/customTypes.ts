@@ -61,12 +61,14 @@ export type ReposProps = {
     repos: Repo[];
 }
 
+export type LocalesProps = {
+    lang: string;
+    lang_name: string;
+    url: string
+}
+
 export type LanguageSwitcherProps = {
-    locales: {
-        lang: string;
-        lang_name: string;
-        url: string;
-    }[] | string[] | undefined,
+    locales: (string | LocalesProps)[] | undefined;
     className?: string;
 }
 
