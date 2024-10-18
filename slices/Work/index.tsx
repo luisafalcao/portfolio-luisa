@@ -12,7 +12,7 @@ import Button from "@/components/Button";
 import clsx from "clsx";
 import { motion } from "framer-motion";
 import { ContextWithPages } from "@/app/types/customTypes";
-import { getProjectsArray } from "@/app/utils/getProjectsArray";
+import { getProjectsArray } from "@/app/utils/getProjects";
 
 /*** Props for `Work`. */
 export type WorkProps = SliceComponentProps<Content.WorkSlice> & {

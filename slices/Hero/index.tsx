@@ -24,7 +24,7 @@ const Hero = ({ slice, context }: HeroProps): JSX.Element => {
       className="flex flex-col md:flex-row w-full overflow-hidden min-h-[50vh]"
     >
       <div className="flex-grow basis-2/5 md:text-right p-10  self-stretch flex flex-col justify-between">
-        <ProjectNav uid={uid} title={title} projectsArray={context.pages} />
+        <ProjectNav uid={uid} title={title} projectsArray={context.uniquePages} />
         <div>
           <Heading as="h2" className="normal-case">{title}</Heading>
           <h3 className="italic">{year}</h3>

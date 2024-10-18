@@ -1,6 +1,11 @@
 import { ImageField, KeyTextField, PrismicDocument } from "@prismicio/client";
 import { Dispatch, SetStateAction } from "react";
 
+export type ArrowProps = {
+    direction: string;
+    targetProject: PrismicDocument | null
+}
+
 export type ProjectNavProps = {
     uid: string | null | undefined;
     projectsArray: PrismicDocument[] | undefined;
@@ -83,5 +88,5 @@ export type ContextProps = {
     };
     locales?: string[];
     page?: PrismicDocument;
-    pages?: PrismicDocument[]
+    uniquePages?: PrismicDocument[]
 };

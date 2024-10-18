@@ -19,10 +19,11 @@ export default async function Page({ params }: { params: Params }) {
         lang: '*'
     });
 
+    const uniquePages = pages.filter((item, index, self) => index === self.findIndex((t) => t.uid === item.uid));
     return (
         <>
             <LanguageSwitcher locales={locales} />
-            <SliceZone slices={page.data.slices} components={components} context={{ pages, page }} />
+            <SliceZone slices={page.data.slices} components={components} context={{ uniquePages, page }} />
         </>
     )
 }
