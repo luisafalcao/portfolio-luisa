@@ -85,6 +85,8 @@ export type Params = {
 }
 
 export type ContextProps = {
+    projectPages?: PrismicDocument[],
+    lang?: string,
     settings?: {
         data: {
             site_title: string,
@@ -92,6 +94,5 @@ export type ContextProps = {
         },
     },
     locales?: string[],
-    page?: PrismicDocument,
-    uniquePages?: PrismicDocument[]
+    currentPage?: PrismicDocument,
 }

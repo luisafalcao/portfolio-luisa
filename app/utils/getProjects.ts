@@ -3,12 +3,9 @@ import { ContextWithPages } from "../types/customTypes";
 
 // Descobrir se context é uma array de PrismicDocuments (PrismicDocument[]) 
 // ou um objeto com a propriedade 'pages':
-function getProjectsArray(context: PrismicDocument[] | ContextWithPages): PrismicDocument[] {
+function getProjectsArray(context: PrismicDocument[]): PrismicDocument[] {
     if (Array.isArray(context)) {
         return context;
-    }
-    if (context && 'pages' in context && Array.isArray(context.pages)) {
-        return context.pages;
     }
     return [];
 }

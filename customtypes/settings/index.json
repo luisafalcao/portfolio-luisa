@@ -26,6 +26,22 @@
           "label": "Intro",
           "placeholder": ""
         }
+      },
+      "categories": {
+        "type": "Group",
+        "config": {
+          "label": "Categories",
+          "repeat": true,
+          "fields": {
+            "categoria": {
+              "type": "Text",
+              "config": {
+                "label": "Categoria",
+                "placeholder": ""
+              }
+            }
+          }
+        }
       }
     }
   }

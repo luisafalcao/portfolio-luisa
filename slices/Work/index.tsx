@@ -11,18 +11,19 @@ import { useState } from "react";
 import Button from "@/components/Button";
 import clsx from "clsx";
 import { motion } from "framer-motion";
-import { ContextWithPages } from "@/app/types/customTypes";
+import { ContextProps } from "@/app/types/customTypes";
 import { getProjectsArray } from "@/app/utils/getProjects";
 
 /*** Props for `Work`. */
 export type WorkProps = SliceComponentProps<Content.WorkSlice> & {
-  context: PrismicDocument[] | ContextWithPages
+  context: ContextProps
 };
 
 /*** Component for "Work" Slices. */
 const Work = ({ slice, context }: WorkProps): JSX.Element => {
   const [currentCategory, setCurrentCategory] = useState<KeyTextField | null>('');
   const isVariation = slice.variation === "fullScreen" ? true : false;
+  const { projectPages } = context
 
   function renderGridItems(array: PrismicDocument[]) {
     const itemsToRender = isVariation ? array : array.slice(0, 6);
@@ -58,7 +59,7 @@ const Work = ({ slice, context }: WorkProps): JSX.Element => {
       : null;
   }
 
-  const projectsArray = getProjectsArray(context); // Get the array of projects from context
+  const projectsArray = projectPages ? getProjectsArray(projectPages) : [];
 
   return (
     <Bounded

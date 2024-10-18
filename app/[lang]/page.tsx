@@ -13,9 +13,10 @@ export default async function Page({ params: { lang }, }: { params: { lang: stri
     if (!home) {
         throw new Error(`No homepage document found for lang: ${lang}`);
     }
-    const pages: PrismicDocument[] = await client.getAllByType("project")
 
-    if (!pages || pages.length === 0) {
+    const projectPages: PrismicDocument[] = await client.getAllByType("project")
+
+    if (!projectPages || projectPages.length === 0) {
         throw new Error('No projects found');
     }
 
@@ -23,7 +24,7 @@ export default async function Page({ params: { lang }, }: { params: { lang: stri
 
     return (
         <>
-            <SliceZone slices={home.data.slices} components={components} context={{ pages, lang, settings, locales }} />
+            <SliceZone slices={home.data.slices} components={components} context={{ projectPages, lang, settings, locales }} />
         </>
     );
 }

@@ -238,6 +238,21 @@ export type ProjectsDocument<Lang extends string = string> =
   >;
 
 /**
+ * Item in *Settings → Categories*
+ */
+export interface SettingsDocumentDataCategoriesItem {
+  /**
+   * Categoria field in *Settings → Categories*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.categories[].categoria
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  categoria: prismic.KeyTextField;
+}
+
+/**
  * Content for Settings documents
  */
 interface SettingsDocumentData {
@@ -273,6 +288,17 @@ interface SettingsDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   intro: prismic.KeyTextField;
+
+  /**
+   * Categories field in *Settings*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.categories[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  categories: prismic.GroupField<Simplify<SettingsDocumentDataCategoriesItem>>;
 }
 
 /**
@@ -847,6 +873,7 @@ declare module "@prismicio/client" {
       ProjectsDocumentDataSlicesSlice,
       SettingsDocument,
       SettingsDocumentData,
+      SettingsDocumentDataCategoriesItem,
       AllDocumentTypes,
       AboutSlice,
       AboutSliceDefaultPrimary,

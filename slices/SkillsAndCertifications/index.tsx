@@ -3,10 +3,11 @@ import Heading from "@/components/Heading";
 import { Content, PrismicDocument } from "@prismicio/client";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { styleVariation } from "@/app/utils/serializers";
+import { ContextProps } from "@/app/types/customTypes";
 
 /*** Props for `SkillsAndCertifications`. */
 export type SkillsAndCertificationsProps = SliceComponentProps<Content.SkillsAndCertificationsSlice> & {
-  context: PrismicDocument
+  context: ContextProps
 };
 
 /*** Component for "SkillsAndCertifications" Slices. */

@@ -7,23 +7,30 @@ import { PrismicDocument } from "@prismicio/client";
 import { getLocales } from "@/app/utils/getLocales";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 
-export default async function Page() {
+export default async function Page({ params: { lang }, }: { params: { lang: string }; }) {
     const client = createClient();
-    const page: PrismicDocument = await client.getSingle("projects");
-    const pages: PrismicDocument[] = await client.getAllByType("project")
-    const locales = await getLocales(page, client);
+    const currentPage: PrismicDocument | null = await client.getByUID("projects", "projects", { lang })
+    // const currentPage: PrismicDocument = await client.getSingle("projects");
+    const projectPages: PrismicDocument[] = await client.getAllByType("project")
+    const settings = await client.getSingle('settings');
+
+    if (!currentPage) {
+        throw new Error(`No homepage document found for lang: ${lang}`);
+    }
+
+    const locales = await getLocales(currentPage, client);
 
     return (
         <>
             <LanguageSwitcher locales={locales} />
-            <SliceZone slices={page.data.slices} components={components} context={pages} />
+            <SliceZone slices={currentPage.data.slices} components={components} context={{ projectPages, settings }} />
         </>
     );
 }
 
-export async function generateMetadata(): Promise<Metadata> {
+export async function generateMetadata({ params: { lang }, }: { params: { lang: string } }): Promise<Metadata> {
     const client = createClient();
-    const page = await client.getSingle("homepage");
+    const page = await client.getByUID("projects", "projects", { lang });
 
     return {
         title: page.data.meta_title,

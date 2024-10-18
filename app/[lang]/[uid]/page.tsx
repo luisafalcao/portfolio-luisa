@@ -10,20 +10,21 @@ import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 
 export default async function Page({ params }: { params: Params }) {
     const client = createClient();
-    const page: PrismicDocument = await client
+    const currentPage: PrismicDocument = await client
         .getByUID("project", params.uid, { lang: params.lang })
         .catch(() => notFound());
-    const locales = await getLocales(page, client);
+    const locales = await getLocales(currentPage, client);
     const pages = await client.getAllByType("project", {
         predicates: [filter.not('my.project.uid', 'homepage')],
         lang: '*'
     });
 
-    const uniquePages = pages.filter((item, index, self) => index === self.findIndex((t) => t.uid === item.uid));
+    const projectPages = pages.filter((item, index, self) => index === self.findIndex((t) => t.uid === item.uid));
+
     return (
         <>
             <LanguageSwitcher locales={locales} />
-            <SliceZone slices={page.data.slices} components={components} context={{ uniquePages, page }} />
+            <SliceZone slices={currentPage.data.slices} components={components} context={{ projectPages, currentPage }} />
         </>
     )
 }
@@ -42,12 +43,12 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
 
 export async function generateStaticParams() {
     const client = createClient();
-    const pages = await client.getAllByType("project", {
+    const projectPages = await client.getAllByType("project", {
         predicates: [filter.not('my.project.uid', 'homepage')],
         lang: '*'
     });
 
-    return pages.map((page) => {
+    return projectPages.map((page) => {
         return { uid: page.uid, lang: page.lang };
     });
 }
