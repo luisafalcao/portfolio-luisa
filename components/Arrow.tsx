@@ -12,12 +12,10 @@ export default function Arrow({ direction, targetProject, className, currentLang
             </svg>
             <div className={
                 clsx(
-                    "absolute text-center text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-200",
+                    "absolute text-center text-sm hidden group-hover:block transition-opacity duration-200 pointer-events-none group-hover:pointer-events-auto top-1/2 transform  -translate-y-1/2",
                     direction === "previous"
-                        ? "right-full mr-2 top-1/2 transform -translate-y-1/2 md:opacity-100"
-                        : "left-full ml-2 top-1/2 transform -translate-y-1/2 md:opacity-100",
-                    "md:block hidden"
-                )}>
+                        ? "right-full mr-2"
+                        : "left-full ml-2")}>
                 {currentLang === 'en-us' ? direction : directionTranslation}
             </div>
         </Link>
