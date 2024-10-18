@@ -21,7 +21,9 @@ const Header = ({ slice, context }: HeaderProps): JSX.Element => {
       <LanguageSwitcher locales={locales} />
       <Heading as="h1" size="xxl" className='text-center mb-0'>{settings?.site_title}</Heading>
       <Heading as="h2" size="md" fontFamily="secondary" className='text-center mb-10 md:mb-0 mt-0'>{settings?.meta_description}</Heading>
-      <PrismicRichText field={slice.primary.intro} components={mainStyle} />
+      <div className="text-center">
+        <PrismicRichText field={slice.primary.intro} components={mainStyle} />
+      </div>
     </Bounded>
   );
 };

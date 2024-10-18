@@ -17,7 +17,7 @@ export default async function Navigation() {
             <ul className='text-base md:text-2xl lowercase flex gap-5'>
                 {homepageSlices.map(({ primary, slice_type }, index) => (
                     <li key={index} className='md:border-effect horizontal'>
-                        <Link href={`/#${slice_type}`}>{'slice_name' in primary && primary.slice_name ? primary.slice_name : 'Unnamed Slice'}</Link>
+                        <Link href={`/#${slice_type}`}>{'slice_name' in primary && primary.slice_name ? primary.slice_name : ''}</Link>
                     </li>
                 ))}
             </ul>
