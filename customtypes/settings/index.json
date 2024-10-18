@@ -20,23 +20,23 @@
           "placeholder": ""
         }
       },
-      "intro": {
-        "type": "Text",
-        "config": {
-          "label": "Intro",
-          "placeholder": ""
-        }
-      },
       "categories": {
         "type": "Group",
         "config": {
           "label": "Categories",
           "repeat": true,
           "fields": {
-            "categoria": {
+            "category_en": {
               "type": "Text",
               "config": {
-                "label": "Categoria",
+                "label": "Category EN",
+                "placeholder": ""
+              }
+            },
+            "category_pt": {
+              "type": "Text",
+              "config": {
+                "label": "Category PT",
                 "placeholder": ""
               }
             }

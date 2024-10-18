@@ -23,7 +23,9 @@ export type WorkProps = SliceComponentProps<Content.WorkSlice> & {
 const Work = ({ slice, context }: WorkProps): JSX.Element => {
   const [currentCategory, setCurrentCategory] = useState<KeyTextField | null>('');
   const isVariation = slice.variation === "fullScreen" ? true : false;
+  const categories = context.settings?.data?.categories ?? [];
   const { projectPages } = context
+  const lang = context.currentPage?.lang ?? ""
 
   function renderGridItems(array: PrismicDocument[]) {
     const itemsToRender = isVariation ? array : array.slice(0, 6);
@@ -58,7 +60,7 @@ const Work = ({ slice, context }: WorkProps): JSX.Element => {
       })
       : null;
   }
-
+  console.log(lang)
   const projectsArray = projectPages ? getProjectsArray(projectPages) : [];
 
   return (
@@ -77,17 +79,19 @@ const Work = ({ slice, context }: WorkProps): JSX.Element => {
       >
         <Heading className="md:mb-10 mr-auto md:ml-4">{slice.primary.slice_name}</Heading>
 
-        {slice.primary.navigation.map((item, index) => (
-          <Heading key={index} size="xs" fontFamily="secondary">
-            <Button
-              category={item.category}
-              setCurrentCategory={setCurrentCategory}
-              currentCategory={currentCategory}
-            >
-              {item.category}
-            </Button>
-          </Heading>
-        ))}
+        {
+          categories.map((item: { category_pt: string, category_en: string }, index: number) => (
+            <Heading key={index} size="xs" fontFamily="secondary">
+              <Button
+                category={lang === "en-us" ? item.category_en : item.category_pt}
+                setCurrentCategory={setCurrentCategory}
+                currentCategory={currentCategory}
+              >
+                {lang === "en-us" ? item.category_en : item.category_pt}
+              </Button>
+            </Heading>
+          ))
+        }
 
         {isVariation ? (
           <Heading size="xs" fontFamily="secondary">

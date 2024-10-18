@@ -23,7 +23,7 @@ export default async function Page({ params: { lang }, }: { params: { lang: stri
     return (
         <>
             <LanguageSwitcher locales={locales} />
-            <SliceZone slices={currentPage.data.slices} components={components} context={{ projectPages, settings }} />
+            <SliceZone slices={currentPage.data.slices} components={components} context={{ projectPages, settings, currentPage }} />
         </>
     );
 }

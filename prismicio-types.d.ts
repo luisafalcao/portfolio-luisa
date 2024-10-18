@@ -242,14 +242,24 @@ export type ProjectsDocument<Lang extends string = string> =
  */
 export interface SettingsDocumentDataCategoriesItem {
   /**
-   * Categoria field in *Settings → Categories*
+   * Category EN field in *Settings → Categories*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: settings.categories[].categoria
+   * - **API ID Path**: settings.categories[].category_en
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  categoria: prismic.KeyTextField;
+  category_en: prismic.KeyTextField;
+
+  /**
+   * Category PT field in *Settings → Categories*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.categories[].category_pt
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  category_pt: prismic.KeyTextField;
 }
 
 /**
@@ -277,17 +287,6 @@ interface SettingsDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   meta_description: prismic.KeyTextField;
-
-  /**
-   * Intro field in *Settings*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: settings.intro
-   * - **Tab**: Main
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  intro: prismic.KeyTextField;
 
   /**
    * Categories field in *Settings*
@@ -646,16 +645,6 @@ export interface SkillsAndCertificationsSliceDefaultPrimary {
   >;
 
   /**
-   * Slice Name field in *SkillsAndCertifications → Default → Primary*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: skills_and_certifications.default.primary.slice_name
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  slice_name: prismic.KeyTextField;
-
-  /**
    * Languages field in *SkillsAndCertifications → Default → Primary*
    *
    * - **Field Type**: Rich Text
@@ -684,6 +673,16 @@ export interface SkillsAndCertificationsSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#rich-text-title
    */
   design: prismic.RichTextField;
+
+  /**
+   * Slice Name field in *SkillsAndCertifications → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: skills_and_certifications.default.primary.slice_name
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  slice_name: prismic.KeyTextField;
 }
 
 /**
@@ -718,21 +717,6 @@ export type SkillsAndCertificationsSlice = prismic.SharedSlice<
 >;
 
 /**
- * Item in *Work → Default → Primary → Navigation*
- */
-export interface WorkSliceDefaultPrimaryNavigationItem {
-  /**
-   * Category field in *Work → Default → Primary → Navigation*
-   *
-   * - **Field Type**: Text
-   * - **Placeholder**: *None*
-   * - **API ID Path**: work.default.primary.navigation[].category
-   * - **Documentation**: https://prismic.io/docs/field#key-text
-   */
-  category: prismic.KeyTextField;
-}
-
-/**
  * Item in *Work → Full Screen → Primary → Navigation*
  */
 export interface WorkSliceFullScreenPrimaryNavigationItem {
@@ -751,18 +735,6 @@ export interface WorkSliceFullScreenPrimaryNavigationItem {
  * Primary content in *Work → Default → Primary*
  */
 export interface WorkSliceDefaultPrimary {
-  /**
-   * Navigation field in *Work → Default → Primary*
-   *
-   * - **Field Type**: Group
-   * - **Placeholder**: *None*
-   * - **API ID Path**: work.default.primary.navigation[]
-   * - **Documentation**: https://prismic.io/docs/field#group
-   */
-  navigation: prismic.GroupField<
-    Simplify<WorkSliceDefaultPrimaryNavigationItem>
-  >;
-
   /**
    * Slice Name field in *Work → Default → Primary*
    *
@@ -902,7 +874,6 @@ declare module "@prismicio/client" {
       SkillsAndCertificationsSliceVariation,
       SkillsAndCertificationsSliceDefault,
       WorkSlice,
-      WorkSliceDefaultPrimaryNavigationItem,
       WorkSliceDefaultPrimary,
       WorkSliceFullScreenPrimaryNavigationItem,
       WorkSliceFullScreenPrimary,

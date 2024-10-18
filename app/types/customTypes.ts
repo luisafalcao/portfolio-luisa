@@ -91,6 +91,10 @@ export type ContextProps = {
         data: {
             site_title: string,
             meta_description: string,
+            categories: {
+                category_pt: string,
+                category_en: string,
+            }[] | undefined
         },
     },
     locales?: string[],

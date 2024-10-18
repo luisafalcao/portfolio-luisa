@@ -3,24 +3,6 @@
 		"__TYPE__": "SharedSliceContent",
 		"variation": "default",
 		"primary": {
-			"navigation": {
-				"__TYPE__": "GroupContentType",
-				"value": [
-					{
-						"__TYPE__": "GroupItemContent",
-						"value": [
-							[
-								"category",
-								{
-									"__TYPE__": "FieldContent",
-									"value": "attack",
-									"type": "Text"
-								}
-							]
-						]
-					}
-				]
-			},
 			"slice_name": {
 				"__TYPE__": "FieldContent",
 				"value": "toy",

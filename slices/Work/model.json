@@ -12,22 +12,6 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
-        "navigation": {
-          "type": "Group",
-          "config": {
-            "label": "Navigation",
-            "repeat": true,
-            "fields": {
-              "category": {
-                "type": "Text",
-                "config": {
-                  "label": "Category",
-                  "placeholder": ""
-                }
-              }
-            }
-          }
-        },
         "slice_name": {
           "type": "Text",
           "config": {

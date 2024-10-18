@@ -30,13 +30,6 @@
             }
           }
         },
-        "slice_name": {
-          "type": "Text",
-          "config": {
-            "label": "Slice Name",
-            "placeholder": ""
-          }
-        },
         "languages": {
           "type": "StructuredText",
           "config": {
@@ -62,6 +55,13 @@
             "placeholder": "",
             "allowTargetBlank": false,
             "multi": "list-item"
+          }
+        },
+        "slice_name": {
+          "type": "Text",
+          "config": {
+            "label": "Slice Name",
+            "placeholder": ""
           }
         }
       },
