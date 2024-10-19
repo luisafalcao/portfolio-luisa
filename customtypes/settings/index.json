@@ -26,17 +26,26 @@
           "label": "Categories",
           "repeat": true,
           "fields": {
-            "category_en": {
+            "category": {
               "type": "Text",
               "config": {
-                "label": "Category EN",
+                "label": "Category",
                 "placeholder": ""
               }
-            },
-            "category_pt": {
+            }
+          }
+        }
+      },
+      "navigation": {
+        "type": "Group",
+        "config": {
+          "label": "Navigation",
+          "repeat": true,
+          "fields": {
+            "menu_item": {
               "type": "Text",
               "config": {
-                "label": "Category PT",
+                "label": "Menu Item",
                 "placeholder": ""
               }
             }

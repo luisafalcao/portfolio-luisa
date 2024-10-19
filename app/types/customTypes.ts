@@ -1,3 +1,4 @@
+import { SettingsDocument } from "@/prismicio-types"
 import { ImageField, KeyTextField, PrismicDocument } from "@prismicio/client"
 import { Dispatch, SetStateAction } from "react"
 
@@ -87,16 +88,11 @@ export type Params = {
 export type ContextProps = {
     projectPages?: PrismicDocument[],
     lang?: string,
-    settings?: {
-        data: {
-            site_title: string,
-            meta_description: string,
-            categories: {
-                category_pt: string,
-                category_en: string,
-            }[] | undefined
-        },
-    },
+    settings?: SettingsDocument,
     locales?: string[],
     currentPage?: PrismicDocument,
+}
+
+export type NavigationProps = {
+    settings: SettingsDocument,
 }

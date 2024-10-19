@@ -8,7 +8,7 @@ import { getLocales } from "@/app/utils/getLocales";
 export default async function Page({ params: { lang }, }: { params: { lang: string }; }) {
     const client = createClient();
     const home: PrismicDocument | null = await client.getByUID("homepage", "homepage", { lang });
-    const settings = await client.getSingle('settings');
+    const settings = await client.getSingle('settings', { lang: lang });
 
     if (!home) {
         throw new Error(`No homepage document found for lang: ${lang}`);

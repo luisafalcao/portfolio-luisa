@@ -10,9 +10,8 @@ import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 export default async function Page({ params: { lang }, }: { params: { lang: string }; }) {
     const client = createClient();
     const currentPage: PrismicDocument | null = await client.getByUID("projects", "projects", { lang })
-    // const currentPage: PrismicDocument = await client.getSingle("projects");
     const projectPages: PrismicDocument[] = await client.getAllByType("project")
-    const settings = await client.getSingle('settings');
+    const settings = await client.getSingle('settings', { lang: lang });
 
     if (!currentPage) {
         throw new Error(`No homepage document found for lang: ${lang}`);

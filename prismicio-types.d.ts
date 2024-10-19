@@ -242,24 +242,29 @@ export type ProjectsDocument<Lang extends string = string> =
  */
 export interface SettingsDocumentDataCategoriesItem {
   /**
-   * Category EN field in *Settings → Categories*
+   * Category field in *Settings → Categories*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: settings.categories[].category_en
+   * - **API ID Path**: settings.categories[].category
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  category_en: prismic.KeyTextField;
+  category: prismic.KeyTextField;
+}
 
+/**
+ * Item in *Settings → Navigation*
+ */
+export interface SettingsDocumentDataNavigationItem {
   /**
-   * Category PT field in *Settings → Categories*
+   * Menu Item field in *Settings → Navigation*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
-   * - **API ID Path**: settings.categories[].category_pt
+   * - **API ID Path**: settings.navigation[].menu_item
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
-  category_pt: prismic.KeyTextField;
+  menu_item: prismic.KeyTextField;
 }
 
 /**
@@ -298,6 +303,17 @@ interface SettingsDocumentData {
    * - **Documentation**: https://prismic.io/docs/field#group
    */
   categories: prismic.GroupField<Simplify<SettingsDocumentDataCategoriesItem>>;
+
+  /**
+   * Navigation field in *Settings*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.navigation[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  navigation: prismic.GroupField<Simplify<SettingsDocumentDataNavigationItem>>;
 }
 
 /**
@@ -846,6 +862,7 @@ declare module "@prismicio/client" {
       SettingsDocument,
       SettingsDocumentData,
       SettingsDocumentDataCategoriesItem,
+      SettingsDocumentDataNavigationItem,
       AllDocumentTypes,
       AboutSlice,
       AboutSliceDefaultPrimary,

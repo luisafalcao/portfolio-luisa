@@ -1,23 +1,20 @@
-import { createClient } from '@/prismicio';
 import Link from 'next/link';
 import Heading from './Heading';
+import { NavigationProps } from '@/app/types/customTypes';
 
-export default async function Navigation() {
-    const client = createClient();
-    const settings = await client.getSingle('settings');
-    const homepage = await client.getSingle('homepage');
-    const homepageSlices = homepage.data.slices
+export default async function Navigation({ settings }: NavigationProps) {
+    const { site_title, meta_description, navigation } = settings.data
 
     return (
         <nav className='navigation w-full flex flex-col md:flex-row justify-between items-center px-20 py-5 fixed bottom-0'>
             <Link href="/" >
-                <Heading as="h3" size='xs' className='hidden md:block mb-0'>{settings.data.site_title}</Heading>
-                <Heading as="h4" size='xs' fontFamily='secondary' className='hidden md:block mt-0'>{settings.data.meta_description}</Heading>
+                <Heading as="h3" size='xs' className='hidden md:block mb-0'>{site_title}</Heading>
+                <Heading as="h4" size='xs' fontFamily='secondary' className='hidden md:block mt-0'>{meta_description}</Heading>
             </Link>
             <ul className='text-base md:text-2xl lowercase flex gap-5'>
-                {homepageSlices.map(({ primary, slice_type }, index) => (
+                {navigation.map(({ menu_item }, index) => (
                     <li key={index} className='md:border-effect horizontal'>
-                        <Link href={`/#${slice_type}`}>{'slice_name' in primary && primary.slice_name ? primary.slice_name : ''}</Link>
+                        <Link href={`/#${menu_item}`}>{menu_item}</Link>
                     </li>
                 ))}
             </ul>
