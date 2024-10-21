@@ -23,7 +23,7 @@ const Hero = ({ slice, context }: HeroProps): JSX.Element => {
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="flex flex-col md:flex-row w-full overflow-hidden min-h-[50vh]"
+      className="flex flex-col md:flex-row w-full overflow-hidden min-h-screen"
     >
       <div className="flex-grow basis-2/5 md:text-right p-10 md:p-24 md:pt-10 self-stretch flex flex-col justify-between">
         <ProjectNav uid={uid} title={title} projectsArray={projectPages} currentLang={lang} />
@@ -33,12 +33,12 @@ const Hero = ({ slice, context }: HeroProps): JSX.Element => {
           <br />
           <PrismicRichText field={description} components={headingWithHr} />
           <hr className="border border-slate-600 my-3" />
-          <PrismicNextLink field={link_github} className="font-secondary">{link_github.text}</PrismicNextLink> | <PrismicNextLink field={link_live_demo} className="font-secondary">{link_live_demo.text}</PrismicNextLink>
+          <PrismicNextLink field={link_github} className="font-secondary">{link_github.text}</PrismicNextLink> {link_github || link_live_demo ? "|" : ""} <PrismicNextLink field={link_live_demo} className="font-secondary">{link_live_demo.text}</PrismicNextLink>
         </div>
       </div>
 
       <div className="basis-3/5" >
-        <PrismicNextImage field={main_image} height={1000} quality={100} style={{ objectFit: "cover", height: "100%", overflow: "hidden" }} />
+        <PrismicNextImage field={main_image} height={1000} quality={100} style={{ objectFit: "cover", height: "100%", width: "100%", overflow: "hidden" }} />
       </div>
     </section>
   );

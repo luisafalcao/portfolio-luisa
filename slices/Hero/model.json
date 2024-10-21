@@ -26,7 +26,7 @@
             "label": "Description",
             "placeholder": "",
             "allowTargetBlank": true,
-            "single": "paragraph,strong,em,hyperlink"
+            "multi": "paragraph,strong,em,hyperlink"
           }
         },
         "link_github": {
