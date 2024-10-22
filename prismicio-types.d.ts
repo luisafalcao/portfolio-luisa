@@ -85,7 +85,7 @@ export type HomepageDocument<Lang extends string = string> =
     Lang
   >;
 
-type ProjectDocumentDataSlicesSlice = GallerySlice | HeroSlice;
+type ProjectDocumentDataSlicesSlice = HeroSlice;
 
 /**
  * Content for Project documents
@@ -446,66 +446,6 @@ export type ContactSlice = prismic.SharedSlice<
 >;
 
 /**
- * Item in *Gallery → Default → Primary → Photos*
- */
-export interface GallerySliceDefaultPrimaryPhotosItem {
-  /**
-   * Photo field in *Gallery → Default → Primary → Photos*
-   *
-   * - **Field Type**: Image
-   * - **Placeholder**: *None*
-   * - **API ID Path**: gallery.default.primary.photos[].photo
-   * - **Documentation**: https://prismic.io/docs/field#image
-   */
-  photo: prismic.ImageField<never>;
-}
-
-/**
- * Primary content in *Gallery → Default → Primary*
- */
-export interface GallerySliceDefaultPrimary {
-  /**
-   * Photos field in *Gallery → Default → Primary*
-   *
-   * - **Field Type**: Group
-   * - **Placeholder**: *None*
-   * - **API ID Path**: gallery.default.primary.photos[]
-   * - **Documentation**: https://prismic.io/docs/field#group
-   */
-  photos: prismic.GroupField<Simplify<GallerySliceDefaultPrimaryPhotosItem>>;
-}
-
-/**
- * Default variation for Gallery Slice
- *
- * - **API ID**: `default`
- * - **Description**: Default
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type GallerySliceDefault = prismic.SharedSliceVariation<
-  "default",
-  Simplify<GallerySliceDefaultPrimary>,
-  never
->;
-
-/**
- * Slice variation for *Gallery*
- */
-type GallerySliceVariation = GallerySliceDefault;
-
-/**
- * Gallery Shared Slice
- *
- * - **API ID**: `gallery`
- * - **Description**: Gallery
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type GallerySlice = prismic.SharedSlice<
-  "gallery",
-  GallerySliceVariation
->;
-
-/**
  * Primary content in *Header → Default → Primary*
  */
 export interface HeaderSliceDefaultPrimary {
@@ -546,6 +486,21 @@ type HeaderSliceVariation = HeaderSliceDefault;
  * - **Documentation**: https://prismic.io/docs/slice
  */
 export type HeaderSlice = prismic.SharedSlice<"header", HeaderSliceVariation>;
+
+/**
+ * Item in *Hero → Default → Primary → Gallery*
+ */
+export interface HeroSliceDefaultPrimaryGalleryItem {
+  /**
+   * Photo field in *Hero → Default → Primary → Gallery*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.default.primary.gallery[].photo
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  photo: prismic.ImageField<never>;
+}
 
 /**
  * Primary content in *Hero → Default → Primary*
@@ -600,6 +555,16 @@ export interface HeroSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   year: prismic.KeyTextField;
+
+  /**
+   * Gallery field in *Hero → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero.default.primary.gallery[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  gallery: prismic.GroupField<Simplify<HeroSliceDefaultPrimaryGalleryItem>>;
 }
 
 /**
@@ -872,16 +837,12 @@ declare module "@prismicio/client" {
       ContactSliceDefaultPrimary,
       ContactSliceVariation,
       ContactSliceDefault,
-      GallerySlice,
-      GallerySliceDefaultPrimaryPhotosItem,
-      GallerySliceDefaultPrimary,
-      GallerySliceVariation,
-      GallerySliceDefault,
       HeaderSlice,
       HeaderSliceDefaultPrimary,
       HeaderSliceVariation,
       HeaderSliceDefault,
       HeroSlice,
+      HeroSliceDefaultPrimaryGalleryItem,
       HeroSliceDefaultPrimary,
       HeroSliceVariation,
       HeroSliceDefault,

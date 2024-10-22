@@ -1,6 +1,5 @@
-import { SettingsDocument } from "@/prismicio-types"
-import { ImageField, KeyTextField, PrismicDocument } from "@prismicio/client"
-import { SliceComponentProps } from "@prismicio/react"
+import { SettingsDocument, Simplify } from "@/prismicio-types"
+import { Content, GroupField, ImageField, ImageFieldImage, KeyTextField, PrismicDocument } from "@prismicio/client"
 import { Dispatch, SetStateAction } from "react"
 
 export type ArrowProps = {
@@ -28,7 +27,8 @@ export type BoundedProps = {
 
 export type GalleryProps = {
     className?: string,
-    content?: SliceComponentProps,
+    mainImage?: ImageFieldImage,
+    gallery?: GroupField<Simplify<Content.HeroSliceDefaultPrimaryGalleryItem>>,
 }
 
 export type GridProps = {

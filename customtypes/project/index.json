@@ -24,9 +24,6 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
-            "gallery": {
-              "type": "SharedSlice"
-            },
             "hero": {
               "type": "SharedSlice"
             }

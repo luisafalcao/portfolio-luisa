@@ -1,6 +1,6 @@
 import Heading from "@/components/Heading";
 import { Content } from "@prismicio/client";
-import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
+import { PrismicNextLink } from "@prismicio/next";
 import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { headingWithHr } from "@/app/utils/serializers";
 import ProjectNav from "@/components/ProjectNav";
@@ -18,7 +18,7 @@ const Hero = ({ slice, context }: HeroProps): JSX.Element => {
   const { uid } = context.currentPage ?? {}
   const { lang } = context.currentPage ?? {}
   const { projectPages } = context ?? []
-  const { year, description, link_github, link_live_demo } = slice.primary
+  const { year, description, link_github, link_live_demo, main_image, gallery } = slice.primary
 
   return (
     <section
@@ -37,17 +37,9 @@ const Hero = ({ slice, context }: HeroProps): JSX.Element => {
         </div>
         <ProjectNav uid={uid} title={title} projectsArray={projectPages} currentLang={lang} />
       </div>
-      <Gallery className="basis-2/3 flex-grow" content={slice.primary} />
+      <Gallery className="basis-2/3 flex-grow" mainImage={main_image} gallery={gallery} />
     </section>
   );
 };
 
 export default Hero;
-
-
-
-{/* <div className="basis-2/3 flex">
-        <PrismicNextImage field={main_image} height={1000} quality={100} style={{ objectFit: "cover", height: "100%", overflow: "hidden" }} />
-        <PrismicNextImage field={main_image} height={1000} quality={100} style={{ objectFit: "cover", height: "100%", overflow: "hidden" }} />
-      </div> */}
-{/* <Gallery class/> */ }

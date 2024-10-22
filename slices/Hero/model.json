@@ -55,6 +55,23 @@
             "label": "Year",
             "placeholder": ""
           }
+        },
+        "gallery": {
+          "type": "Group",
+          "config": {
+            "label": "Gallery",
+            "repeat": true,
+            "fields": {
+              "photo": {
+                "type": "Image",
+                "config": {
+                  "label": "Photo",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              }
+            }
+          }
         }
       },
       "items": {}
