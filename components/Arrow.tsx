@@ -14,8 +14,8 @@ export default function Arrow({ direction, targetProject, className, currentLang
                 clsx(
                     "absolute text-center text-sm hidden group-hover:block transition-opacity duration-200 pointer-events-none group-hover:pointer-events-auto top-1/2 transform  -translate-y-1/2",
                     direction === "previous"
-                        ? "right-full mr-2"
-                        : "left-full ml-2")}>
+                        ? "left-full mr-2"
+                        : "right-full ml-2")}>
                 {currentLang === 'en-us' ? direction : directionTranslation}
             </div>
         </Link>

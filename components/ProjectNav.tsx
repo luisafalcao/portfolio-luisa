@@ -11,7 +11,7 @@ export default async function ProjectNav({ uid, projectsArray, currentLang }: Pr
     const nextProject = getNextProject(projects, currentProject)
 
     return (
-        <div className="flex justify-end">
+        <div className="flex justify-between mt-6">
             <Arrow direction="previous" targetProject={previousProject} currentLang={currentLanguage} />
             <Arrow direction="next" targetProject={nextProject} currentLang={currentLanguage} />
         </div>

@@ -5,6 +5,7 @@ import { PrismicRichText, SliceComponentProps } from "@prismicio/react";
 import { headingWithHr } from "@/app/utils/serializers";
 import ProjectNav from "@/components/ProjectNav";
 import { ContextProps } from "@/app/types/customTypes";
+import Gallery from "@/components/Gallery";
 
 /*** Props for `Hero`. */
 export type HeroProps = SliceComponentProps<Content.HeroSlice> & {
@@ -17,31 +18,36 @@ const Hero = ({ slice, context }: HeroProps): JSX.Element => {
   const { uid } = context.currentPage ?? {}
   const { lang } = context.currentPage ?? {}
   const { projectPages } = context ?? []
-  const { year, description, link_github, link_live_demo, main_image } = slice.primary
+  const { year, description, link_github, link_live_demo } = slice.primary
 
   return (
     <section
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      className="flex flex-col md:flex-row w-full overflow-hidden min-h-screen"
+      className="flex flex-col lg:flex-row w-full overflow-hidden min-h-screen"
     >
-      <div className="flex-grow basis-2/5 md:text-right p-10 md:p-24 md:pt-10 self-stretch flex flex-col justify-between">
-        <ProjectNav uid={uid} title={title} projectsArray={projectPages} currentLang={lang} />
-        <div className="mt-5 md:mt-0">
+      <div className="lg:flex-grow basis-1/3 lg:text-right p-10 md:p-24 md:pt-10 self-stretch flex flex-col md:justify-center">
+        <div className="mt-20 lg:mt-0">
           <Heading as="h2" className="normal-case">{title}</Heading>
           <h3 className="italic">{year}</h3>
           <br />
           <PrismicRichText field={description} components={headingWithHr} />
           <hr className="border border-slate-600 my-3" />
-          <PrismicNextLink field={link_github} className="font-secondary">{link_github.text}</PrismicNextLink> {link_github || link_live_demo ? "|" : ""} <PrismicNextLink field={link_live_demo} className="font-secondary">{link_live_demo.text}</PrismicNextLink>
+          <PrismicNextLink field={link_github} className="font-secondary">{link_github.text}</PrismicNextLink> {link_github.text && link_live_demo.text ? "|" : ""} <PrismicNextLink field={link_live_demo} className="font-secondary">{link_live_demo.text}</PrismicNextLink>
         </div>
+        <ProjectNav uid={uid} title={title} projectsArray={projectPages} currentLang={lang} />
       </div>
-
-      <div className="basis-3/5" >
-        <PrismicNextImage field={main_image} height={1000} quality={100} style={{ objectFit: "cover", height: "100%", width: "100%", overflow: "hidden" }} />
-      </div>
+      <Gallery className="basis-2/3 flex-grow" content={slice.primary} />
     </section>
   );
 };
 
 export default Hero;
+
+
+
+{/* <div className="basis-2/3 flex">
+        <PrismicNextImage field={main_image} height={1000} quality={100} style={{ objectFit: "cover", height: "100%", overflow: "hidden" }} />
+        <PrismicNextImage field={main_image} height={1000} quality={100} style={{ objectFit: "cover", height: "100%", overflow: "hidden" }} />
+      </div> */}
+{/* <Gallery class/> */ }

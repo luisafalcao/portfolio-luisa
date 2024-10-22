@@ -1,5 +1,6 @@
 import { SettingsDocument } from "@/prismicio-types"
 import { ImageField, KeyTextField, PrismicDocument } from "@prismicio/client"
+import { SliceComponentProps } from "@prismicio/react"
 import { Dispatch, SetStateAction } from "react"
 
 export type ArrowProps = {
@@ -23,6 +24,11 @@ export type BoundedProps = {
     children: React.ReactNode,
     flexDirection?: "row" | "column",
     isVariation?: boolean,
+}
+
+export type GalleryProps = {
+    className?: string,
+    content?: SliceComponentProps,
 }
 
 export type GridProps = {
