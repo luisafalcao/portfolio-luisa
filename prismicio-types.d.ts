@@ -265,6 +265,18 @@ export interface SettingsDocumentDataNavigationItem {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   menu_item: prismic.KeyTextField;
+
+  /**
+   * Target Slice field in *Settings → Navigation*
+   *
+   * - **Field Type**: Select
+   * - **Placeholder**: *None*
+   * - **API ID Path**: settings.navigation[].target_slice
+   * - **Documentation**: https://prismic.io/docs/field#select
+   */
+  target_slice: prismic.SelectField<
+    "About" | "Work" | "Skills and Certifications" | "Contact"
+  >;
 }
 
 /**

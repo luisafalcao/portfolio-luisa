@@ -20,7 +20,7 @@ const SkillsAndCertifications = ({ slice, context }: SkillsAndCertificationsProp
       data-slice-variation={slice.variation}
       className="bg-light"
       flexDirection="column"
-      id={slice.slice_type}
+      id={slice.slice_type?.toLowerCase()}
     >
       <div className="basis-1/2 flex flex-col w-full">
         <Heading>{currentLang === "en-us" ? "Skills" : "Habilidades"}</Heading>

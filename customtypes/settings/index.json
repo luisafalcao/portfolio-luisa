@@ -48,6 +48,19 @@
                 "label": "Menu Item",
                 "placeholder": ""
               }
+            },
+            "target_slice": {
+              "type": "Select",
+              "config": {
+                "label": "Target Slice",
+                "placeholder": "",
+                "options": [
+                  "About",
+                  "Work",
+                  "Skills and Certifications",
+                  "Contact"
+                ]
+              }
             }
           }
         }

@@ -5,6 +5,8 @@ import clsx from 'clsx';
 
 export default async function Navigation({ settings }: NavigationProps) {
     const { site_title, meta_description, navigation } = settings.data
+    const url = settings.lang === 'pt-br' ? '/pt-br/#' : '/#'
+
     return (
         <nav className={clsx('navigation w-full flex flex-col md:flex-row justify-between items-center px-20 py-5 fixed bottom-0')}>
             <Link href="/" >
@@ -12,9 +14,9 @@ export default async function Navigation({ settings }: NavigationProps) {
                 <Heading as="h4" size='xs' fontFamily='secondary' className='hidden md:block mt-0'>{meta_description}</Heading>
             </Link>
             <ul className='text-base md:text-2xl lowercase flex gap-5'>
-                {navigation.map(({ menu_item }, index) => (
+                {navigation.map(({ menu_item, target_slice }, index) => (
                     <li key={index} className='md:border-effect horizontal'>
-                        <Link href={`/#${menu_item}`}>{menu_item}</Link>
+                        <Link href={`${url}${target_slice?.toLowerCase().replaceAll(' ', '_')}`}>{menu_item}</Link>
                     </li>
                 ))}
             </ul>

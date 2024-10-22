@@ -14,7 +14,7 @@ const About = ({ slice }: AboutProps): JSX.Element => {
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
       className="bg-light"
-      id={slice.slice_type}
+      id={slice.primary.slice_name?.toLowerCase().replaceAll(' ', '_')}
     >
       <div className="basis-1/3">
         <Heading>{slice.primary.slice_name}</Heading>

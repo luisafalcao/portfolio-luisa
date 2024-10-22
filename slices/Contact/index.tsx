@@ -13,7 +13,7 @@ const Contact = ({ slice }: ContactProps): JSX.Element => {
     <Bounded
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
-      id={slice.slice_type}
+      id={slice.slice_type?.toLowerCase()}
       className="bg-purple-light"
     >
       <div className="basis-1/3">

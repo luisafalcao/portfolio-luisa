@@ -61,12 +61,13 @@ const Work = ({ slice, context }: WorkProps): JSX.Element => {
   }
   const projectsArray = projectPages ? getProjectsArray(projectPages) : [];
 
+  console.log(projectsArray)
   return (
     <Bounded
       data-slice-type={slice.slice_type}
       data-slice-variation={slice.variation}
       isVariation={isVariation}
-      id={slice.slice_type}
+      id={slice.slice_type?.toLowerCase()}
       className="bg-medium"
     >
       <div
@@ -116,11 +117,25 @@ const Work = ({ slice, context }: WorkProps): JSX.Element => {
       <Grid className="basis-2/3" isVariation={isVariation}>
         {currentCategory === ''
           ? renderGridItems(projectsArray)
-          : renderGridItems(
-            projectsArray.filter(
-              (project: PrismicDocument) => project.tags.find((tag) => tag === currentCategory) === currentCategory
+          : currentCategory === "Design Gráfico" ?
+            renderGridItems(
+              projectsArray.filter(
+                (project: PrismicDocument) => project.tags.find((tag) => tag === "Graphic Design") === "Graphic Design"
+              )
             )
-          )}
+            : currentCategory === "Programação" ?
+              renderGridItems(
+                projectsArray.filter(
+                  (project: PrismicDocument) => project.tags.find((tag) => tag === "Coding") === "Coding"
+                )
+              )
+              :
+              renderGridItems(
+                projectsArray.filter(
+                  (project: PrismicDocument) => project.tags.find((tag) => tag === currentCategory) === currentCategory
+                )
+              )
+        }
       </Grid>
     </Bounded>
   );
