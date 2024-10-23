@@ -61,7 +61,6 @@ const Work = ({ slice, context }: WorkProps): JSX.Element => {
   }
   const projectsArray = projectPages ? getProjectsArray(projectPages) : [];
 
-  console.log(projectsArray)
   return (
     <Bounded
       data-slice-type={slice.slice_type}
