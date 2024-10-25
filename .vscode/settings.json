@@ -3,5 +3,8 @@
         "activityBar.background": "#4B0C62",
         "titleBar.activeBackground": "#69108A",
         "titleBar.activeForeground": "#FDFAFE"
+    },
+    "emmet.includeLanguages": {
+        "postcss": "css"
     }
 }
