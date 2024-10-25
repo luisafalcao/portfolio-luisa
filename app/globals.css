@@ -13,33 +13,31 @@
 
 @layer utilities {
     .bg-yellow-purple {
-        background-image: linear-gradient(
-            320deg,
-            var(--purple) 0%,
-            var(--yellow) 100%
-        );
+        background-image: linear-gradient(320deg,
+                var(--purple) 0%,
+                var(--yellow) 100%);
     }
 
     .bg-purple-yellow {
-        background-image: linear-gradient(
-            320deg,
-            var(--yellow) 0%,
-            var(--purple) 100%
-        );
+        background-image: linear-gradient(320deg,
+                var(--yellow) 0%,
+                var(--purple) 100%);
     }
 
     .bg-purple-light {
         background-image: linear-gradient(var(--purple) 0%, var(--light) 100%);
     }
 
+    .bg-light-transparent {
+        background-image: linear-gradient(90deg, var(--light) 0%, transparent 100%);
+    }
+
     .bg-half {
-        background-image: linear-gradient(
-            0deg,
-            var(--light) 0%,
-            var(--light) 50%,
-            var(--medium) 50%,
-            var(--medium) 100%
-        );
+        background-image: linear-gradient(0deg,
+                var(--light) 0%,
+                var(--light) 50%,
+                var(--medium) 50%,
+                var(--medium) 100%);
     }
 }
 
@@ -49,7 +47,8 @@
     }
 
     .border-effect.vertical {
-        padding-left: 1rem; /* Adjust padding for space between text and border */
+        padding-left: 1rem;
+        /* Adjust padding for space between text and border */
     }
 
     .border-effect.horizontal {
@@ -59,7 +58,8 @@
     .border-effect::before {
         content: '';
         position: absolute;
-        background-color: black; /* Border color */
+        background-color: black;
+        /* Border color */
         transform: translateY(-50%);
     }
 
@@ -67,51 +67,66 @@
         left: 0;
         top: 50%;
         height: 0;
-        width: 2px; /* Thickness of the border */
+        width: 2px;
+        /* Thickness of the border */
         transition:
             height 0.4s ease-in-out,
-            top 0.4s ease-in-out; /* Smooth transition */
+            top 0.4s ease-in-out;
+        /* Smooth transition */
     }
 
     .border-effect.horizontal::before {
         bottom: 0;
         left: 50%;
         width: 0;
-        height: 2px; /* Thickness of the border */
+        height: 2px;
+        /* Thickness of the border */
         transition:
             width 0.4s ease-in-out,
-            left 0.4s ease-in-out; /* Smooth transition */
+            left 0.4s ease-in-out;
+        /* Smooth transition */
     }
 
     .border-effect:hover::before {
-        transform: none; /* Align properly at the top */
+        transform: none;
+        /* Align properly at the top */
     }
 
     .border-effect.vertical:hover::before {
-        height: 100%; /* Expand the border to full height */
-        top: 0; /* Move the starting point to the top */
+        height: 100%;
+        /* Expand the border to full height */
+        top: 0;
+        /* Move the starting point to the top */
     }
 
     .border-effect.horizontal:hover::before {
-        width: 100%; /* Expand the border to full height */
-        left: 0; /* Move the starting point to the top */
+        width: 100%;
+        /* Expand the border to full height */
+        left: 0;
+        /* Move the starting point to the top */
     }
 
     .border-static {
         position: relative;
-        padding-left: 1rem; /* Space between text and border */
+        padding-left: 1rem;
+        /* Space between text and border */
     }
 
     .border-static::before {
         content: '';
         position: absolute;
         left: 0;
-        top: 50%; /* Static from the top */
-        height: 100%; /* Full height for the static border */
-        width: 2px; /* Thickness of the border */
+        top: 50%;
+        /* Static from the top */
+        height: 100%;
+        /* Full height for the static border */
+        width: 2px;
+        /* Thickness of the border */
         transform: translateY(-50%);
-        background-color: black; /* Border color */
-        transform-origin: center; /* Center point for transformation */
+        background-color: black;
+        /* Border color */
+        transform-origin: center;
+        /* Center point for transformation */
     }
 
     .navigation {
@@ -129,15 +144,17 @@
 
     #scrollable-gallery {
         overflow-x: scroll;
-        overflow-y: hidden; /* Prevents vertical scrolling */
+        overflow-y: hidden;
+        /* Prevents vertical scrolling */
         display: flex;
-        height: 100%; /* Ensures it uses the parent container’s height */
+        height: 100%;
+        /* Ensures it uses the parent container’s height */
     }
 
     .scroller {
         width: 100%;
         height: 2px;
         transform-origin: left;
-        transform: scaleX(0.025);
+        transform: scaleX(0);
     }
 }

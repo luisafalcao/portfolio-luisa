@@ -7,7 +7,7 @@ export default function Gallery({ className, mainImage, gallery }: GalleryProps)
     return (
         <div className={clsx("w-full overflow-x-hidden flex flex-col max-w-screen-2xl", className)}>
             {/* row 1 */}
-            <div className="bg-red-200 basis-1/2 md:max-h-[50vh]">
+            <div className="basis-1/2 md:max-h-[50vh]">
                 <PrismicNextImage placeholder="blur" blurDataURL={mainImage?.url ?? undefined} field={mainImage} quality={100} className="object-cover h-full" />
             </div>
 

@@ -9,12 +9,18 @@ export default function Scroller() {
     useEffect(() => {
         const scrollContainer = document.getElementById("scrollable-gallery");
 
+        if (scrollerRef.current) {
+            scrollerRef.current.style.transform = `scaleX(1)`;
+        }
         const handleScroll = () => {
             if (scrollContainer && scrollerRef.current) {
                 const { scrollLeft, scrollWidth, clientWidth } = scrollContainer;
-                const initialOffset = 0.025;
-                const scrollProgress = initialOffset + (scrollLeft / (scrollWidth - clientWidth)) * (1 - initialOffset);
-                scrollerRef.current.style.transform = `scaleX(${scrollProgress})`;
+                // const initialOffset = 0.025;
+                const scrollProgress = scrollLeft / (scrollWidth - clientWidth);
+
+                const scaleValue = 1 - scrollProgress
+                scrollerRef.current.style.transform = `scaleX(${scaleValue})`;
+                scrollerRef.current.style.transformOrigin = 'right';
             }
         };
 
@@ -24,5 +30,5 @@ export default function Scroller() {
         }
     }, []);
 
-    return <div ref={scrollerRef} className="scroller absolute top-0 left-0 w-full h-1 bg-yellow-purple"></div>;
+    return <div ref={scrollerRef} className="scroller absolute top-0 left-0 w-full h-1 bg-light-transparent"></div>;
 }
