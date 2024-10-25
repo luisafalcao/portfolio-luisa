@@ -12,7 +12,7 @@ export default function Scroller() {
         const handleScroll = () => {
             if (scrollContainer && scrollerRef.current) {
                 const { scrollLeft, scrollWidth, clientWidth } = scrollContainer;
-                const initialOffset = 0.05;
+                const initialOffset = 0.025;
                 const scrollProgress = initialOffset + (scrollLeft / (scrollWidth - clientWidth)) * (1 - initialOffset);
                 scrollerRef.current.style.transform = `scaleX(${scrollProgress})`;
             }
