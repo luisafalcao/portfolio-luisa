@@ -1,5 +1,4 @@
 import { PrismicDocument } from "@prismicio/client";
-import { ContextWithPages } from "../types/customTypes";
 
 // Descobrir se context é uma array de PrismicDocuments (PrismicDocument[]) 
 // ou um objeto com a propriedade 'pages':
