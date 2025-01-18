@@ -449,7 +449,7 @@ export interface SettingsDocumentDataNavigationItem {
    * - **Documentation**: https://prismic.io/docs/field#select
    */
   target_slice: prismic.SelectField<
-    "About" | "Work" | "Skills and Certifications" | "Contact"
+    "About" | "Work" | "Skills and Certifications" | "Contact" | "Journal"
   >;
 }
 
@@ -645,11 +645,11 @@ export type ContactSlice = prismic.SharedSlice<
 >;
 
 /**
- * Primary content in *Journal → Default → Primary*
+ * Primary content in *Entries → Default → Primary*
  */
 export interface EntriesSliceDefaultPrimary {
   /**
-   * Slice Name field in *Journal → Default → Primary*
+   * Slice Name field in *Entries → Default → Primary*
    *
    * - **Field Type**: Text
    * - **Placeholder**: *None*
@@ -660,7 +660,7 @@ export interface EntriesSliceDefaultPrimary {
 }
 
 /**
- * Default variation for Journal Slice
+ * Default variation for Entries Slice
  *
  * - **API ID**: `default`
  * - **Description**: Default
@@ -673,12 +673,12 @@ export type EntriesSliceDefault = prismic.SharedSliceVariation<
 >;
 
 /**
- * Slice variation for *Journal*
+ * Slice variation for *Entries*
  */
 type EntriesSliceVariation = EntriesSliceDefault;
 
 /**
- * Journal Shared Slice
+ * Entries Shared Slice
  *
  * - **API ID**: `entries`
  * - **Description**: Entries

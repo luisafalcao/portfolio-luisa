@@ -29,12 +29,12 @@ const SkillsAndCertifications = ({ slice, context }: SkillsAndCertificationsProp
           <PrismicRichText field={slice.primary.languages} components={alternativeStyle} />
         </div>
 
-        <div className="flex flex-col md:flex-row  items-center md:items-end md:gap-4">
+        <div className="flex flex-col md:flex-row items-center md:items-end md:gap-4">
           <Heading as="h3" size="xs" fontFamily="secondary" className="mb-0">{currentLang === "en-us" ? "Coding:" : "Desenvolvimento:"}</Heading>
           <PrismicRichText field={slice.primary.coding} components={alternativeStyle} />
         </div>
 
-        <div className="flex flex-col md:flex-row  items-center md:items-end md:gap-4">
+        <div className="flex flex-col md:flex-row items-center md:items-end md:gap-4">
           <Heading as="h3" size="xs" fontFamily="secondary" className="mb-0">{currentLang === "en-us" ? "Graphic Design:" : "Design:"}</Heading>
           <PrismicRichText field={slice.primary.design} components={alternativeStyle} />
         </div>
