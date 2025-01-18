@@ -1,0 +1,14 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"slice_name": {
+				"__TYPE__": "FieldContent",
+				"value": "traffic",
+				"type": "Text"
+			}
+		},
+		"items": []
+	}
+]

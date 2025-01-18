@@ -42,6 +42,7 @@ export type GridItemProps = {
     data: PrismicDocument,
     index: number,
     image: ImageField<never> | null,
+    type: "journal" | "projects"
 }
 
 export type HeadingProps = {
@@ -93,6 +94,7 @@ export type Params = {
 
 export type ContextProps = {
     projectPages?: PrismicDocument[],
+    journalPages?: PrismicDocument[],
     lang?: string,
     settings?: SettingsDocument,
     locales?: string[],

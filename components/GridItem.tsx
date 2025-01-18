@@ -3,7 +3,7 @@ import { GridItemProps } from "@/app/types/customTypes";
 import Link from "next/link";
 import clsx from "clsx";
 
-export default function GridItem({ className, data, index, image }: GridItemProps) {
+export default function GridItem({ className, data, index, image, type }: GridItemProps) {
     const { uid } = data
     const { title } = data.data
 
@@ -13,7 +13,7 @@ export default function GridItem({ className, data, index, image }: GridItemProp
     }
 
     return (
-        <Link href={`/${uid}`} key={data.id}>
+        <Link href={`/${type === "journal" ? "journal/" : ""}${uid}`} key={data.id}>
             <div className={clsx("group relative w-full min-h-60 p-5 flex justify-center items-center overflow-clip", className)}>
                 <PrismicNextImage field={image} style={{ objectFit: "cover", width: "100%", height: "100%", position: "absolute" }} className="grayscale group-hover:grayscale-0 group-hover:opacity-30 group-hover:scale-125 transition-all"></PrismicNextImage>
                 <p className="relative z-10 scale-0 group-hover:scale-100 transition-all">{title}</p>

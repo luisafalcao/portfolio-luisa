@@ -85,6 +85,180 @@ export type HomepageDocument<Lang extends string = string> =
     Lang
   >;
 
+type JournalDocumentDataSlicesSlice = EntriesSlice;
+
+/**
+ * Content for Journal documents
+ */
+interface JournalDocumentData {
+  /**
+   * Title field in *Journal*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: journal.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Slice Zone field in *Journal*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: journal.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<JournalDocumentDataSlicesSlice> /**
+   * Meta Title field in *Journal*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: journal.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Journal*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: journal.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Journal*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: journal.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * Journal document from Prismic
+ *
+ * - **API ID**: `journal`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type JournalDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<JournalDocumentData>,
+    "journal",
+    Lang
+  >;
+
+type JournalEntryDocumentDataSlicesSlice = never;
+
+/**
+ * Content for Journal Entry documents
+ */
+interface JournalEntryDocumentData {
+  /**
+   * Title field in *Journal Entry*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: journal_entry.title
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Content field in *Journal Entry*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: journal_entry.content
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  content: prismic.RichTextField;
+
+  /**
+   * Featured Image field in *Journal Entry*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: journal_entry.featured_image
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  featured_image: prismic.ImageField<never>;
+
+  /**
+   * Slice Zone field in *Journal Entry*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: journal_entry.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<JournalEntryDocumentDataSlicesSlice> /**
+   * Meta Title field in *Journal Entry*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: journal_entry.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *Journal Entry*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: journal_entry.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *Journal Entry*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: journal_entry.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * Journal Entry document from Prismic
+ *
+ * - **API ID**: `journal_entry`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type JournalEntryDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<JournalEntryDocumentData>,
+    "journal_entry",
+    Lang
+  >;
+
 type ProjectDocumentDataSlicesSlice = HeroSlice;
 
 /**
@@ -357,6 +531,8 @@ export type SettingsDocument<Lang extends string = string> =
 
 export type AllDocumentTypes =
   | HomepageDocument
+  | JournalDocument
+  | JournalEntryDocument
   | ProjectDocument
   | ProjectsDocument
   | SettingsDocument;
@@ -466,6 +642,51 @@ type ContactSliceVariation = ContactSliceDefault;
 export type ContactSlice = prismic.SharedSlice<
   "contact",
   ContactSliceVariation
+>;
+
+/**
+ * Primary content in *Journal → Default → Primary*
+ */
+export interface EntriesSliceDefaultPrimary {
+  /**
+   * Slice Name field in *Journal → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: entries.default.primary.slice_name
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  slice_name: prismic.KeyTextField;
+}
+
+/**
+ * Default variation for Journal Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type EntriesSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<EntriesSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *Journal*
+ */
+type EntriesSliceVariation = EntriesSliceDefault;
+
+/**
+ * Journal Shared Slice
+ *
+ * - **API ID**: `entries`
+ * - **Description**: Entries
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type EntriesSlice = prismic.SharedSlice<
+  "entries",
+  EntriesSliceVariation
 >;
 
 /**
@@ -841,6 +1062,12 @@ declare module "@prismicio/client" {
       HomepageDocument,
       HomepageDocumentData,
       HomepageDocumentDataSlicesSlice,
+      JournalDocument,
+      JournalDocumentData,
+      JournalDocumentDataSlicesSlice,
+      JournalEntryDocument,
+      JournalEntryDocumentData,
+      JournalEntryDocumentDataSlicesSlice,
       ProjectDocument,
       ProjectDocumentData,
       ProjectDocumentDataSlicesSlice,
@@ -860,6 +1087,10 @@ declare module "@prismicio/client" {
       ContactSliceDefaultPrimary,
       ContactSliceVariation,
       ContactSliceDefault,
+      EntriesSlice,
+      EntriesSliceDefaultPrimary,
+      EntriesSliceVariation,
+      EntriesSliceDefault,
       HeaderSlice,
       HeaderSliceDefaultPrimary,
       HeaderSliceVariation,

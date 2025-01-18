@@ -44,7 +44,7 @@ const Work = ({ slice, context }: WorkProps): JSX.Element => {
           (infoSourceSlice?.primary.main_image as ImageField<never>) || null;
 
         return isVariation ? (
-          <GridItem data={project} index={index} image={image} />
+          <GridItem data={project} index={index} image={image} type="projects" />
         ) : (
           <motion.div
             key={index}
@@ -53,7 +53,7 @@ const Work = ({ slice, context }: WorkProps): JSX.Element => {
             exit={{ opacity: 0, scale: 0 }}
             transition={{ duration: 0.4, delay: index * 0.1 }}
           >
-            <GridItem data={project} index={index} image={image} />
+            <GridItem data={project} index={index} image={image} type="projects" />
           </motion.div>
         );
       })
