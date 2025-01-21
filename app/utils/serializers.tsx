@@ -3,7 +3,7 @@ import { JSXMapSerializer } from "@prismicio/react";
 
 const basicSerializer: JSXMapSerializer = {
     paragraph: ({ children }) => (
-        <p className="font-primary text-base md:text-xl mb-6 last:mb-0 leading-normal">{children}</p>
+        <p className="font-primary text-base md:text-lg mb-6 last:mb-0 leading-normal">{children}</p>
     ),
     hyperlink: ({ node, children }) => (
         <a href={node.data.url} className="border-effect horizontal">{children}</a>
