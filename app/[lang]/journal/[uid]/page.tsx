@@ -1,4 +1,4 @@
-import { PrismicDocument, filter } from "@prismicio/client";
+import { PrismicDocument } from "@prismicio/client";
 import { PrismicRichText, SliceZone } from "@prismicio/react";
 import { createClient } from "@/prismicio";
 import { Metadata } from "next";
@@ -13,16 +13,17 @@ import { PrismicNextImage } from "@prismicio/next";
 
 export default async function Page({ params }: { params: Params }) {
     const client = createClient();
+
     const currentPage: PrismicDocument = await client
         .getByUID("journal_entry", params.uid, { lang: params.lang })
         .catch(() => notFound());
+
     const locales = await getLocales(currentPage, client);
-    const pages = await client.getAllByType("journal_entry", {
-        predicates: [filter.not('my.journal_entry.uid', 'homepage')],
-        lang: '*'
-    });
+
+    const pages = await client.getAllByType("journal_entry", { lang: '*' });
+
     const { title, content, featured_image } = currentPage.data
-    const journalPages = pages.filter((item, index, self) => index === self.findIndex((t) => t.uid === item.uid));
+
 
     return (
         <>
@@ -38,10 +39,10 @@ export default async function Page({ params }: { params: Params }) {
                         <hr className="border border-slate-600 my-3" />
                         <PrismicRichText field={content} components={headingWithHr} />
                     </div>
-                    {/* <ProjectNav uid={uid} title={title} projectsArray={journalPages} currentLang={lang} /> */}
+                    {/* <ProjectNav uid={uid} title={title} projectsArray={pages} currentLang={lang} /> */}
                 </div>
             </section>
-            <SliceZone slices={currentPage.data.slices} components={components} context={{ journalPages, currentPage }} />
+            <SliceZone slices={currentPage.data.slices} components={components} context={{ pages, currentPage }} />
         </>
     )
 }
@@ -60,12 +61,11 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
 
 export async function generateStaticParams() {
     const client = createClient();
-    const journalPages = await client.getAllByType("journal_entry", {
-        predicates: [filter.not('my.journal_entry.uid', 'homepage')],
-        lang: '*'
-    });
+    const journalPages = await client.getAllByType("journal_entry", { lang: '*' });
 
-    return journalPages.map((page) => {
+    const filteredPages = journalPages.filter((page) => page.uid !== "homepage");
+
+    return filteredPages.map((page) => {
         return { uid: page.uid, lang: page.lang };
     });
 }
