@@ -62,12 +62,12 @@ export async function generateStaticParams() {
     const client = createClient();
 
     const journalPages = await client.getAllByType("journal_entry", {
-        predicates: [
-            filter.not('my.journal_entry.uid', 'homepage')],
         lang: '*'
     });
 
-    return journalPages.map((page) => {
+    const filteredPages = journalPages.filter(page => page.uid !== "homepage");
+
+    return filteredPages.map((page) => {
         return { uid: page.uid, lang: page.lang };
     });
 }
