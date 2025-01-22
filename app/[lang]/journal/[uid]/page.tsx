@@ -60,8 +60,10 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
 
 export async function generateStaticParams() {
     const client = createClient();
+
     const journalPages = await client.getAllByType("journal_entry", {
-        predicates: [filter.not('my.journal_entry.uid', 'homepage')],
+        predicates: [
+            filter.not('my.journal_entry.uid', 'homepage')],
         lang: '*'
     });
 
